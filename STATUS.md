@@ -1,0 +1,61 @@
+# Amazon-Abrechnung zu DATEV: Settlement-Bericht im Browser in einen DATEV-Buchungsstapel umwandeln
+
+**Stage:** specced · **Platform:** web · **Score:** 3/5 · **Spend:** $1.79
+
+For German Amazon sellers whose tax advisor books in DATEV and who rely on DATEV's Zahlungsdatenservice für Amazon (end 2027-08-15, known data gaps): upload the Amazon settlement report and download a checked DATEV EXTF booking batch (sales, fees, refunds, payout reconciliation) without granting API access. If it takes off it becomes the settlement-to-DATEV converter for every marketplace (eBay, Kaufland, Etsy) that tax advisors recommend to their clients.
+
+**Why now:** DATEV stops development, maintenance and service of its Zahlungsdatenservice für Amazon (Art.-Nr. 20496) on 2027-08-15 (end date; announcement date not shown) and already warns of balance differences, outdated and missing data (2027-08-15). Window: Users of the DATEV service must move before 2027-08-15. Pages that rank for 'datev amazon zahlungsdatenservice' in early 2027 catch the migration. After that it is a standing need that Amainvoice and Taxdoo also serve.
+
+## Needs you
+
+- [ ] [task 1] Download one real Amazon.de settlement Flat File V2 from Seller Central, anonymise it, put it in fixtures/real/ and confirm the menu path and the date and number formats (before going live, not a QA gate)
+- [ ] [task 2] Have a tax firm or DATEV user test-import one generated EXTF_*.csv into DATEV and confirm it imports and that OP-Ausgleich by order ID works
+- [ ] [task 3] Create a Stripe account, create the 4 prices, add STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET and STRIPE_PRICE_* as env vars, enable invoice emails and the Customer Portal, and set up VAT handling; go live only after the two checks above
+- [ ] [task 4] Register the domain, connect Cloudflare Pages, create the KV namespace and submit the sitemap in Google Search Console
+- [ ] [task 5] Fill in the Impressum details and have a lawyer review the legal pages (Impressum, Datenschutz, AGB, StBerG wording)
+- [ ] [task 6] Every quarter, check DATEV's discontinuation page and Amazon's SP-API changelog for settlement format changes
+
+## Recommendation
+
+None yet. The Growth role gives one after launch.
+
+## Metrics
+
+No real numbers yet. Fill in `metrics.json` (Search Console, analytics, Stripe); agents never invent them.
+
+## Monetisation
+
+subscription (Händler 9 EUR/month or 89 EUR/year (1 Mandantennummer); Kanzlei 29 EUR/month or 290 EUR/year (up to 25 Mandantennummern); prices net plus VAT)
+
+## Target queries
+
+- amazon datev export
+- datev amazon zahlungsdatenservice
+- datev amazon zahlungsdatenservice alternative
+- amazon datev schnittstelle
+- datev amazon buchen
+- amazon abrechnung datev
+- amazon settlement report datev
+- amazon abrechnungsbericht flat file v2
+- amazon gebühren buchen skr03
+- steuerberater amazon datev
+
+## Alternatives found
+
+- Amainvoice (solid): A full Amazon accounting suite (invoices, OSS, Intrastat) from 39 EUR a month for 200 documents. Too dear for small sellers who paid DATEV 1.36 EUR a month.
+- Taxdoo (solid): E-commerce accounting and VAT suite, not a small single-job converter. Price not checked.
+- DATEV Datenservice Zahlungsdienstleister (Amazon Payments Europe) (partial): Seen only in search results. It may be DATEV's own successor. Not opened or checked.
+- DATEV Zahlungsdatenservice für Amazon (abandoned): Discontinued from 2027-08-15. DATEV already warns of wrong or missing data.
+
+## Kill criteria
+
+- Fewer than 150 organic clicks in total by 2027-03-31
+- Fewer than 5 paying licences by 2027-06-30
+- Fewer than 15 paying licences by 2027-09-30 (after that, keep running only if revenue exceeds cost)
+- DATEV announces a drop-in successor for marketplace settlements at 10 EUR a month or less: review within 2 weeks, re-price or park
+- Any confirmed wrong booking that the reconciliation check missed: disable checkout until fixed
+
+## History
+
+- 2026-11-12 21:14 · scouted · ranked first in the daily pool (aggregate 3.65 of 5 by 3 independent rankers); the studio builds the day's best candidate whatever its score, and the prototype is how it is judged
+- 2026-11-12 21:25 · specced · spec written
