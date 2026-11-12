@@ -85,3 +85,7 @@ A designer who looked at the real pages said: The front page is not finished.
 A designer who looked at the real pages said: The front page is not finished.
 
 - [x] [Visual round 2] The file input is the browser default. Hide it behind a labelled drop area with a clear button and an example of what to drop.
+
+## QA round 2
+
+- [ ] [QA round 2] Automated check failed after QA: npm test --if-present ly equal [ '', 'agb/', …(7) ][39m [32m- Expected[39m [31m+ Received[39m [2m [[22m [32m- "",[39m [32m- "agb/",[39m [32m- "amazon-abre… (repo)
