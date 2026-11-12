@@ -1,0 +1,44 @@
+---
+interface Props {
+  state: 'ok' | 'diff';
+  amount?: string;
+  id?: string;
+}
+const { state, amount = '', id = 'stamp-static' } = Astro.props;
+const ok = state === 'ok';
+const word = ok ? 'SALDO STIMMT' : `DIFFERENZ ${amount}`.trim();
+const width = Math.max(260, 28 + word.length * 17);
+---
+
+<svg
+  class="stamp"
+  data-state={state}
+  width={width}
+  height="84"
+  viewBox={`0 0 ${width} 84`}
+  role="img"
+  aria-label={ok ? 'Saldo stimmt' : `Differenz ${amount}`}
+  style={`color: ${ok ? 'var(--green)' : 'var(--red)'}`}
+>
+  <defs>
+    <filter id={`${id}-ink`} x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="n"></feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.2"></feDisplacementMap>
+    </filter>
+  </defs>
+  <g filter={`url(#${id}-ink)`} fill="none" stroke="currentColor" transform={`rotate(-3 ${width / 2} 42)`}>
+    <path d={`M6 8 L${width - 5} 6 L${width - 7} 78 L5 76 Z`} stroke-width="3"></path>
+    <path d={`M13 15 L${width - 12} 14 L${width - 14} 70 L12 69 Z`} stroke-width="1.5"></path>
+    <text
+      x={width / 2}
+      y="52"
+      text-anchor="middle"
+      fill="currentColor"
+      stroke="none"
+      font-family="'IBM Plex Mono', ui-monospace, monospace"
+      font-weight="600"
+      font-size="24"
+      letter-spacing="3">{word}</text>
+  </g>
+</svg>
+

@@ -2,15 +2,61 @@
 import Base from '../layouts/Base.astro';
 ---
 
-<Base title="Datenschutz – Abrechnung → DATEV" description="Datenschutzerklärung: Abrechnungsdateien bleiben im Browser.">
-  <p class="section-label">Entwurf · rechtlich prüfen lassen</p>
-  <h1>Datenschutz&shy;erklärung</h1>
+<Base title="Datenschutzerklärung – Abrechnung → DATEV" description="Welche Daten der Konverter verarbeitet: keine Dateiuploads, lokale Speicherung im Browser, Lizenzprüfung mit Hash, Zahlung über Stripe.">
+  <p class="section-label">Entwurf · anwaltlich prüfen lassen</p>
+  <h1>Datenschutzerklärung</h1>
   <p class="notice notice-warn">
-    <span class="label">Entwurf</span>Platzhalter. Der vollständige Text folgt und wird anwaltlich geprüft.
+    <span class="label">Entwurf</span>Entwurf – anwaltlich prüfen lassen. Platzhalter in eckigen Klammern trägt der Betreiber ein.
   </p>
-  <h2>Ihre Abrechnungsdateien</h2>
+
+  <h2>1. Verantwortlicher</h2>
+  <p>[Name / Firma, Anschrift, E-Mail] (siehe Impressum).</p>
+
+  <h2>2. Ihre Abrechnungsdatei bleibt im Browser</h2>
   <p>
-    Die Datei wird ausschließlich in Ihrem Browser verarbeitet und nicht hochgeladen. Kontenprofil und
-    Lizenzschlüssel speichert der Browser im lokalen Speicher (localStorage) Ihres Geräts.
+    Die Abrechnungsdatei (Amazon Flat File V2) wird ausschließlich in Ihrem Browser gelesen und verarbeitet. Sie wird nicht hochgeladen und
+    nicht an unsere Server oder an Dritte gesendet. Bestellnummern, Beträge und SKUs verlassen Ihren Rechner nicht. Die erzeugte DATEV-Datei
+    entsteht ebenfalls lokal.
+  </p>
+
+  <h2>3. Speicherung im Browser (localStorage)</h2>
+  <p>
+    Der Konverter speichert in Ihrem Browser (localStorage) Ihr Kontenprofil (Kontenzuordnung und Einstellungen ohne Berater- und
+    Mandantennummer), die Bestätigung der Kontenzuordnung und, wenn Sie ihn eingeben, Ihren Lizenzschlüssel. Das sind keine Cookies. Sie
+    können die Daten jederzeit in den Browsereinstellungen löschen. Die Speicherung ist für die gewünschte Funktion erforderlich (§ 25 Abs. 2
+    Nr. 2 TDDDG).
+  </p>
+
+  <h2>4. Lizenzprüfung beim Download</h2>
+  <p>
+    Beim Download sendet der Browser Ihren Lizenzschlüssel und einen SHA-256-Hash aus Beraternummer und Mandantennummer an unsere
+    Cloudflare-Funktion. Die Klartextnummern werden nicht übertragen. Der Server speichert pro Lizenzschlüssel den Tarif, die Stripe-Kunden-
+    und Abonnement-ID, den Status und die Menge der gesehenen Hashes, um die Zahl der Mandanten je Tarif zu begrenzen. Rechtsgrundlage ist
+    Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung).
+  </p>
+
+  <h2>5. Zahlung über Stripe</h2>
+  <p>
+    Abonnements werden über Stripe Payments Europe, Ltd. abgewickelt. Zahlungs- und Rechnungsdaten erfasst Stripe als eigener
+    Verantwortlicher beziehungsweise Auftragsverarbeiter nach dessen Bedingungen; wir erhalten keine Kartendaten. Wir erhalten die
+    Kunden-ID, den Tarif und den Abostatus. Der Lizenzschlüssel wird zusätzlich auf Ihren Stripe-Rechnungen ausgewiesen.
+  </p>
+
+  <h2>6. Hosting und Reichweitenmessung</h2>
+  <p>
+    Die Seite wird bei Cloudflare gehostet. Dabei verarbeitet Cloudflare technisch notwendige Verbindungsdaten (zum Beispiel IP-Adresse) in
+    Server-Logs. Wir nutzen, sofern aktiviert, Cloudflare Web Analytics. Das Werkzeug arbeitet ohne Cookies und ohne Profilbildung und misst
+    Seitenaufrufe; es wird kein Dateiinhalt und keine Zahl aus Ihrer Abrechnung übertragen.
+  </p>
+
+  <h2>7. Ihre Rechte</h2>
+  <p>
+    Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch
+    (Art. 15–21 DSGVO) sowie auf Beschwerde bei einer Aufsichtsbehörde. Wenden Sie sich dazu an die im Impressum genannte Adresse.
+  </p>
+
+  <h2>8. Speicherdauer</h2>
+  <p>
+    Lizenzdaten speichern wir, solange das Abonnement besteht, und danach nur, soweit gesetzliche Aufbewahrungspflichten es verlangen.
   </p>
 </Base>

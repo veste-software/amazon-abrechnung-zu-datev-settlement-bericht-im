@@ -1,0 +1,122 @@
+---
+import Base from '../layouts/Base.astro';
+import { V2_COLUMNS } from '../lib/settlement/types';
+import { withBase } from '../lib/url';
+
+const meaning: Record<string, string> = {
+  'settlement-id': 'Nummer der Abrechnung; steht in Belegfeld 1 bei Zeilen ohne Bestellung und im Dateinamen.',
+  'settlement-start-date': 'Beginn des Abrechnungszeitraums.',
+  'settlement-end-date': 'Ende des Abrechnungszeitraums.',
+  'deposit-date': 'Tag der Auszahlung; Datum der Auszahlungsbuchung.',
+  'total-amount': 'Auszahlungsbetrag der Abrechnung, nur in der Summenzeile gefüllt.',
+  currency: 'Währung der Abrechnung. Der Konverter verarbeitet nur EUR.',
+  'transaction-type': 'Art der Zeile, zum Beispiel Bestellung oder Erstattung; in der Summenzeile leer.',
+  'order-id': 'Amazon-Bestellnummer; dient dem OP-Ausgleich.',
+  'merchant-order-id': 'Ihre eigene Bestellnummer, falls vergeben.',
+  'adjustment-id': 'Nummer einer Korrektur, etwa einer Erstattung.',
+  'shipment-id': 'Nummer der Sendung.',
+  'marketplace-name': 'Marktplatz, zum Beispiel Amazon.de.',
+  'amount-type': 'Gruppe der Zeile, etwa ItemPrice, ItemFees, Promotion oder Other-Transaction.',
+  'amount-description': 'Genauere Bezeichnung, etwa Principal, Commission oder Storage Fee.',
+  amount: 'Betrag der Zeile, positiv oder negativ.',
+  'fulfillment-id': 'Versandart, zum Beispiel durch Amazon.',
+  'posted-date': 'Buchungsdatum der Zeile; wird zum Belegdatum.',
+  'posted-date-time': 'Buchungsdatum mit Uhrzeit.',
+  'order-item-code': 'Nummer der Bestellposition.',
+  'merchant-order-item-id': 'Ihre eigene Positionsnummer.',
+  'merchant-adjustment-item-id': 'Ihre eigene Nummer der Korrekturposition.',
+  sku: 'Artikelnummer des Händlers.',
+  'quantity-purchased': 'Gekaufte Menge.',
+  'promotion-id': 'Nummer der Aktion bei Rabatten.',
+};
+---
+
+<Base
+  title="Amazon Abrechnungsbericht Flat File V2 herunterladen und lesen"
+  description="So laden Sie den Amazon-Abrechnungsbericht (Flat File V2) herunter, was sich am 11.11.2026 geändert hat und was jede der 24 Spalten bedeutet."
+>
+  <p class="section-label">Abrechnungsbericht</p>
+  <h1>Amazon-Abrechnungsbericht (Flat File V2): Download und Spalten</h1>
+  <div class="grid">
+    <div class="col-main">
+      <p class="lead">
+        Der Abrechnungsbericht ist die Datei, aus der der Konverter den DATEV-Buchungsstapel erzeugt. Seit dem 11.11.2026 liefert Amazon nur noch
+        das Format »Flat File V2«. Hier steht, wie Sie die Datei bekommen und was darin steht.
+      </p>
+
+      <h2>Bericht herunterladen</h2>
+      <p>
+        Der Bericht wird im Seller Central abgerufen. Der Menüpfad kann sich ändern; nach den vorliegenden Angaben lautet er:
+        <strong>Zahlungen → Berichte-Archiv</strong> (englisch <strong>Payments → Reports Repository</strong>). Die Bezeichnung kann abweichen.
+        Der Pfad wurde nicht an einem echten Konto geprüft.
+      </p>
+      <ol class="checklist">
+        <li>Melden Sie sich im Seller Central des Marktplatzes an, dessen Abrechnung Sie buchen wollen.</li>
+        <li>Öffnen Sie im Bereich Zahlungen das Berichte-Archiv.</li>
+        <li>Wählen Sie den Berichtstyp für Abrechnungen und das Format <strong>Flat File V2</strong>, nicht die älteren Typen.</li>
+        <li>Laden Sie die Abrechnung des gewünschten Zeitraums herunter. Die Datei ist tabulatorgetrennt, meist mit der Endung .txt.</li>
+        <li>Legen Sie die Datei im <a href={withBase('/')}>Konverter</a> ab. Sie wird nicht hochgeladen.</li>
+      </ol>
+
+      <h2>Was sich am 11.11.2026 geändert hat</h2>
+      <p>
+        Amazon hat die beiden älteren Abrechnungsberichte, den Flat File und den XML-Bericht, laut
+        <a href="https://developer-docs.amazon/sp-api/changelog/update-deprecation-of-two-payment-settlement-report-types">Änderungsmitteilung</a>
+        für Verkäufer zum 11.11.2026 abgeschaltet. Erhalten bleibt der Flat File V2. Der alte Bericht hatte andere Spaltennamen; so heißen die
+        Spalten <code>amount-type</code> und <code>amount-description</code> im alten Format <code>price-type</code> und
+        <code>item-related-fee-type</code>. Eigene Tabellen und Makros, die auf dem alten Format aufbauen, müssen angepasst werden. Der
+        Konverter erkennt den alten Bericht an diesen Spaltennamen und weist die Datei mit einer Erklärung zurück.
+      </p>
+
+      <h2>Format und Lesen der Werte</h2>
+      <p>
+        Die Datei ist tabulatorgetrennt, die erste Zeile enthält die Spaltennamen. Der Konverter ordnet die Spalten nach Namen zu, nicht nach
+        Position, und ignoriert unbekannte Zusatzspalten mit einem Hinweis. Die Dokumentation von Amazon nennt keine Beispielzeilen und kein
+        Datumsformat. Deshalb liest der Konverter mehrere Schreibweisen: Zahlen als <code>1234.56</code>, <code>1234,56</code> oder
+        <code>1.234,56</code>; Datumsangaben als <code>2026-10-03T16:00:00+00:00</code>, <code>2026-10-03 16:00:00 UTC</code>,
+        <code>03.10.2026 16:00:00 UTC</code> oder <code>03.10.2026</code>. Jedes andere Format stoppt die Verarbeitung mit einer Meldung, die
+        Zeile und Wert nennt. Die Dateikodierung wird zuerst als UTF-8 gelesen, danach als Windows-1252.
+      </p>
+      <p>
+        Die <strong>Summenzeile</strong> ist die Zeile, in der <code>total-amount</code> gefüllt und <code>transaction-type</code> leer ist. Sie
+        liefert Abrechnungsnummer, Zeitraum, Auszahlungsdatum und Gesamtbetrag. Alle anderen Zeilen sind Einzelposten. Die Summe der Einzelposten
+        muss dem Gesamtbetrag entsprechen; das prüft der Konverter vor jedem Export.
+      </p>
+
+      <h2>Die 24 Spalten</h2>
+      <div class="scroll">
+        <table class="ledger">
+          <thead>
+            <tr><th>Spalte</th><th>Bedeutung</th></tr>
+          </thead>
+          <tbody>
+            {V2_COLUMNS.map((c) => (
+              <tr>
+                <td class="num-left">{c}</td>
+                <td>{meaning[c]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Die Spaltenliste stammt aus der
+        <a href="https://developer-docs.amazon/sp-api/docs/settlement-reports-attributes">Dokumentation der Settlement-Report-Attribute</a>.
+        Die Erläuterungen in der Tabelle sind eigene Kurzfassungen. Typische Werte für <code>amount-type</code> und
+        <code>amount-description</code> finden Sie auf der Seite
+        <a href={withBase('/amazon-gebuehren-buchen-datev/')}>Amazon-Gebühren buchen</a>.
+      </p>
+
+      <h2>Hinweis zu Mustern</h2>
+      <p>
+        Die Testdateien dieses Projekts sind synthetisch und aus der Spaltenliste gebaut, nicht aus einer echten Amazon-Datei. Ob der Download aus
+        Seller Central DE genau dieses Zahlen- und Datumsformat liefert, ist vor dem Livegang an einer echten Datei zu bestätigen.
+      </p>
+    </div>
+    <aside class="col-side">
+      <p class="label">Quelle</p>
+      <p>Amazon SP-API-Dokumentation, Stand 12.11.2026.</p>
+      <p><a href={withBase('/')}>Zum Konverter</a></p>
+    </aside>
+  </div>
+</Base>

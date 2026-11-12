@@ -13,6 +13,8 @@
     "lint": "astro check",
     "design-check": "node scripts/design-check.mjs",
     "size": "node scripts/size.mjs",
+    "test:pages": "astro build && vitest run tests/pages.test.ts",
+    "fixtures": "node scripts/make-fixtures.mjs",
     "astro": "astro"
   },
   "dependencies": {

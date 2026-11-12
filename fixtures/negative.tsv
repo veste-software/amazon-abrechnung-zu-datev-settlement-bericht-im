@@ -1,0 +1,8 @@
+settlement-id	settlement-start-date	settlement-end-date	deposit-date	total-amount	currency	transaction-type	order-id	merchant-order-id	adjustment-id	shipment-id	marketplace-name	amount-type	amount-description	amount	fulfillment-id	posted-date	posted-date-time	order-item-code	merchant-order-item-id	merchant-adjustment-item-id	sku	quantity-purchased	promotion-id
+12345678905	2026-10-03 16:00:00 UTC	2026-10-17 15:59:59 UTC	2026-10-20 16:00:00 UTC	-81.98	EUR																		
+12345678905						Order	028-2000001-1000001			S1000001	Amazon.de	ItemPrice	Principal	19.99	AFN	2026-10-05	2026-10-05T10:15:00+00:00	1000001			SKU-TASSE-01	1	
+12345678905						Order	028-2000001-1000001			S1000001	Amazon.de	ItemFees	Commission	-3.00	AFN	2026-10-05	2026-10-05T10:15:00+00:00	1000001			SKU-TASSE-01	1	
+12345678905						Order	028-2000001-1000001			S1000001	Amazon.de	ItemFees	FBAPerUnitFulfillmentFee	-3.06	AFN	2026-10-05	2026-10-05T10:15:00+00:00	1000001			SKU-TASSE-01	1	
+12345678905						Refund	028-2000009-9000009		ADJ9000009		Amazon.de	ItemPrice	Principal	-59.90	AFN	2026-10-08	2026-10-08T10:15:00+00:00	1000009			SKU-LAMPE-03	1	
+12345678905						Refund	028-2000009-9000009		ADJ9000009		Amazon.de	ItemFees	Commission	8.99	AFN	2026-10-08	2026-10-08T10:15:00+00:00	1000009			SKU-LAMPE-03	1	
+12345678905						Other-Transaction						Other-Transaction	Storage Fee	-45.00		2026-10-17	2026-10-17T10:15:00+00:00						

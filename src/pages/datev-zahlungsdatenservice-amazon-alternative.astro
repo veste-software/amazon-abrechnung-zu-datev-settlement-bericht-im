@@ -1,0 +1,109 @@
+---
+import Base from '../layouts/Base.astro';
+import { withBase } from '../lib/url';
+---
+
+<Base
+  title="DATEV Zahlungsdatenservice für Amazon: Alternative ab 2027"
+  description="Der DATEV Zahlungsdatenservice für Amazon endet am 15.08.2027. Was das heißt, was DATEV empfiehlt, welche Alternativen es gibt und eine Checkliste für den Umstieg."
+>
+  <p class="section-label">Umstieg</p>
+  <h1>DATEV Zahlungsdatenservice für Amazon: was nach dem 15.08.2027 bleibt</h1>
+  <div class="grid">
+    <div class="col-main">
+      <p class="lead">
+        DATEV beendet den Zahlungsdatenservice für Amazon zum 15.08.2027. Wer bisher Amazon wie ein Bankkonto in DATEV eingespielt hat, braucht
+        bis dahin einen anderen Weg. Diese Seite ordnet die Lage und nennt die Alternativen mit ihren öffentlichen Preisen.
+      </p>
+
+      <h2>Was endet am 15.08.2027</h2>
+      <p>
+        Auf der Produktseite des
+        <a href="https://www.datev.de/web/de/marktplatz/datev-zahlungsdatenservice-fuer-amazon">DATEV Zahlungsdatenservice für Amazon</a>
+        (Art.-Nr. 20496, Preis ab 1,36 Euro im Monat) nennt DATEV das Ende von Entwicklung, Wartung und Service zum 15.08.2027. Auf der Liste der
+        <a href="https://www.datev.de/web/de/berufsgruppenuebergreifend/nachrichten/rund-um-die-datev-programme/kuendigungen-und-leistungsaenderungen-von-produkten/">Produktkündigungen</a>
+        steht der Dienst mit dem Zusatz »zum 15.08.2027«. Dort steht auch die Warnung, dass bis dahin mit Saldendifferenzen, veralteten Daten und
+        fehlenden Daten zu rechnen ist. Ein Nachfolger wird auf den geprüften Seiten nicht genannt.
+      </p>
+      <p>
+        Der Dienst hat Umsätze und Gebühren des Amazon-Kontos wie Bankumsätze bereitgestellt. Die Zuordnung offener Posten (OP-Ausgleich) lief über
+        die Bestellnummer. Genau diese Funktion muss ein Ersatz abdecken: Umsätze auf ein Verrechnungskonto, Gebühren auf Aufwandskonten, die
+        Auszahlung gegen das Bankkonto.
+      </p>
+
+      <h2>Was DATEV selbst empfiehlt</h2>
+      <p>
+        In einem Seller-Forum-Beitrag zur Kündigung verweist DATEV auf den
+        <a href="https://www.datev.de/web/de/shop/produkt-details/datev-iswl-zahlungsdaten-konverter-45098">ISWL Zahlungsdaten-Konverter</a>
+        (Art.-Nr. 45098, laut Suchergebnis monatlich ab 25,00 €). Er richtet sich an Steuerkanzleien und ist ein allgemeiner Konverter für
+        Zahlungsdateien. Für Amazon gibt es ein Schema zum Herunterladen, die Feldzuordnung müssen Sie aber selbst einrichten. Eine
+        Amazon-spezifische Prüfung gegen die Auszahlung gehört nicht zum Funktionsumfang, den DATEV beschreibt. Die
+        <a href="https://www.datev.de/web/de/steuerberatung/loesungen/rechnungswesen/buchfuehrung-erstellen/automatisierungsservices-rechnungswesen/datev-iswl-zahlungsdaten-konverter-anleitungen-informationen">Anleitungsseite</a>
+        zeigt die Einrichtung.
+      </p>
+      <p>
+        Seit April 2026 bietet DATEV außerdem den »Datenservice Zahlungsdienstleister« an (Pressemitteilung vom 07.04.2026), unter anderem für Amazon
+        Payments Europe ab 10,00 Euro im Monat. Beide geprüften Seiten sagen nicht, dass er Abrechnungen des Amazon-Marktplatzes abdeckt oder den
+        alten Dienst ersetzt. Fragen Sie vor einer Entscheidung bei DATEV nach.
+      </p>
+
+      <h2>Alternativen im Überblick</h2>
+      <p>Nur öffentlich genannte Preise. Wo keine Zahl steht, ist keine veröffentlicht oder sie wurde nicht geprüft.</p>
+      <div class="scroll">
+        <table class="ledger">
+          <thead>
+            <tr>
+              <th>Lösung</th>
+              <th>Anbindung</th>
+              <th>Öffentlicher Preis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>DATEV ISWL Zahlungsdaten-Konverter</td><td>Datei, Vorlage selbst einrichten</td><td>ab 25,00 € im Monat</td></tr>
+            <tr><td><a href="https://www.amainvoice.de/en/datev-amazon-integration">Amainvoice</a></td><td>Amazon-Konto (API)</td><td>ab 39 € für bis zu 200 Belege</td></tr>
+            <tr><td><a href="https://www.pathway-solutions.de/amazon-zu-datev">pathway</a></td><td>Amazon-Konto (API)</td><td>Zusatz »Buchungsdatenservice« 25 €, Enterprise ab 2.000 € im Monat</td></tr>
+            <tr><td><a href="https://www.taxdoo.com/en/features/accounting-software-ecommerce/">Taxdoo</a></td><td>Amazon-Konto (API)</td><td>nicht öffentlich</td></tr>
+            <tr><td><a href="https://www.countx.com/amazon-connex">CountX Amazon conneX</a></td><td>Amazon-Konto, nur Lesezugriff</td><td>»free beta«, spätere Preise unbekannt</td></tr>
+            <tr><td><a href="https://apps.shopify.com/accountone?locale=de">AccountOne</a></td><td>Amazon-Konto</td><td>Anbindung »Kostenlos«</td></tr>
+            <tr><td><a href="https://fybu.de/blog/einstellung-datev-amazon-api/">fybu</a></td><td>Amazon-Konto</td><td>nicht öffentlich, Demo auf Anfrage</td></tr>
+            <tr><td>Abrechnung → DATEV (dieses Werkzeug)</td><td>Abrechnungsdatei, nur im Browser</td><td>9 € im Monat (Händler), 29 € im Monat (Kanzlei, bis 25 Mandanten), netto</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Der Unterschied zu den verbundenen Lösungen: Dieses Werkzeug greift nicht auf das Amazon-Konto zu. Sie laden den
+        <a href={withBase('/amazon-abrechnungsbericht-flat-file-v2/')}>Abrechnungsbericht</a> selbst herunter und legen ihn im
+        <a href={withBase('/')}>Konverter</a> ab. Die Datei wird nur im Browser verarbeitet. Das spart den Vertrag zur Auftragsverarbeitung und
+        die Freigabe im Amazon-Konto. Der Preis dafür ist der manuelle Download alle zwei Wochen.
+      </p>
+
+      <h2>Checkliste für die Umstellung</h2>
+      <ol class="checklist">
+        <li>Legen Sie das Datum fest, ab dem die neue Datei den alten Dienst ersetzt, am besten an einer Abrechnungsgrenze.</li>
+        <li>Notieren Sie die letzte Abrechnung, die der Zahlungsdatenservice gebucht hat, und die erste, die per Datei kommt. Keine darf doppelt oder gar nicht gebucht sein.</li>
+        <li>Stimmen Sie mit der Steuerkanzlei Verrechnungskonto, Geldtransit, Sammeldebitor, Gebührenkonten und BU-Schlüssel ab. Die Kanzlei legt das Kontenprofil einmal fest und gibt es als JSON-Datei weiter.</li>
+        <li>Prüfen Sie im Konverter, dass die Differenz zur Auszahlung 0,00 € beträgt, bevor Sie eine Datei erzeugen.</li>
+        <li>Vermeiden Sie doppelten OP-Ausgleich: Die Belegnummer (Belegfeld 1) ist die Bestellnummer. Wurden Umsätze schon vom alten Dienst eingespielt, importieren Sie dieselbe Abrechnung nicht erneut.</li>
+        <li>Machen Sie am Umstellungstag einen Saldenabgleich des Amazon-Verrechnungskontos gegen den Kontostand im Seller Central.</li>
+        <li>Lassen Sie die erste erzeugte Datei von der Kanzlei in einer Testumgebung importieren, bevor Sie sie festschreiben.</li>
+        <li>Prüfen Sie alle drei Monate die DATEV-Kündigungsliste und die Änderungsmitteilungen von Amazon auf neue Formate.</li>
+      </ol>
+
+      <h2>Was bei Amazon schon passiert ist</h2>
+      <p>
+        Amazon hat die älteren Abrechnungsberichte (Flat File und XML) zum 11.11.2026 abgeschaltet. Es bleibt der Bericht
+        »Flat File V2«. Selbstgebaute Tabellen und Makros, die auf dem alten Format beruhen, laufen seitdem ins Leere. Der Konverter erkennt den
+        alten Bericht und erklärt, welcher Download stattdessen nötig ist.
+      </p>
+      <p>
+        Der Konverter ist ein Hilfsmittel für Buchungsvorschläge, kein Ersatz für die Abstimmung mit Ihrer Steuerkanzlei. Er ist nicht mit
+        Amazon oder DATEV verbunden.
+      </p>
+    </div>
+    <aside class="col-side">
+      <p class="label">Quelle</p>
+      <p>Stand der Angaben: 12.11.2026. Preise und Termine bitte auf den verlinkten Seiten gegenprüfen.</p>
+      <p><a href={withBase('/')}>Zum Konverter</a></p>
+    </aside>
+  </div>
+</Base>

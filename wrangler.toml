@@ -1,0 +1,8 @@
+name = "amazon-abrechnung-zu-datev"
+compatibility_date = "2026-11-01"
+pages_build_output_dir = "dist"
+
+# Secrets (STRIPE_*) are set in the Pages project settings, never here.
+[[kv_namespaces]]
+binding = "LICENCES"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"

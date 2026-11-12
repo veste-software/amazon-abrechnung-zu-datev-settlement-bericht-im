@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+import { withBase } from '../lib/url';
+---
+
+<Base
+  title="Preise: Händler 9 € und Kanzlei 29 € im Monat"
+  description="Die Prüfung und die Vorschau sind kostenlos. Der Download der DATEV-Datei kostet im Tarif Händler 9 € im Monat, im Tarif Kanzlei 29 € im Monat, jeweils netto."
+>
+  <p class="section-label">Preise</p>
+  <h1>Preise</h1>
+  <div class="grid">
+    <div class="col-main">
+      <p class="lead">Die Prüfung gegen die Auszahlung und die Vorschau der ersten 25 Buchungszeilen sind kostenlos, so oft Sie möchten. Bezahlt wird der Download.</p>
+      <table class="ledger">
+        <thead>
+          <tr><th>Tarif</th><th class="num">Monat</th><th class="num">Jahr</th><th>Mandantennummern</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Händler</td><td class="num">9 €</td><td class="num">89 €</td><td>1</td></tr>
+          <tr><td>Kanzlei</td><td class="num">29 €</td><td class="num">290 €</td><td>bis 25</td></tr>
+        </tbody>
+      </table>
+      <p>Alle Preise netto zuzüglich Umsatzsteuer. Beide Tarife enthalten beliebig viele Abrechnungen. Zahlung per Kreditkarte über Stripe, Kündigung jederzeit im Stripe-Kundenportal zum Ende des Abrechnungszeitraums.</p>
+      <h2>Kostenlos</h2>
+      <p>Datei ablegen, Differenz zur Auszahlung sehen, Summen je Konto, die 20 größten Buchungen, nicht zugeordnete Positionen und die Vorschau der Buchungszeilen. Kontenprofil exportieren und importieren.</p>
+      <p><a class="btn" href={withBase('/')}>Zum Konverter</a></p>
+    </div>
+    <aside class="col-side">
+      <p class="label">Hinweis</p>
+      <p>Der Kauf läuft über Stripe. Den Lizenzschlüssel zeigt die Bestätigungsseite und er steht auf jeder Rechnung.</p>
+    </aside>
+  </div>
+</Base>

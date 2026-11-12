@@ -2,10 +2,61 @@
 import Base from '../layouts/Base.astro';
 ---
 
-<Base title="AGB – Abrechnung → DATEV" description="Allgemeine Geschäftsbedingungen für Unternehmer (B2B).">
-  <p class="section-label">Entwurf · rechtlich prüfen lassen</p>
-  <h1>Allgemeine Geschäfts&shy;bedingungen</h1>
+<Base title="AGB – Abrechnung → DATEV" description="Allgemeine Geschäftsbedingungen für Unternehmer: Leistung, Prüfpflicht, Haftung, Abonnement und Kündigung.">
+  <p class="section-label">Entwurf · anwaltlich prüfen lassen</p>
+  <h1>Allgemeine Geschäftsbedingungen</h1>
   <p class="notice notice-warn">
-    <span class="label">Entwurf</span>Platzhalter. Die AGB (B2B, Haftungsbegrenzung, Buchungsvorschläge) folgen und werden anwaltlich geprüft.
+    <span class="label">Entwurf</span>Entwurf – anwaltlich prüfen lassen, auch die Formulierungen zur Buchführung (StBerG).
   </p>
+
+  <h2>1. Geltung und Zielgruppe</h2>
+  <p>
+    Diese Bedingungen gelten für die Nutzung des Konverters »Abrechnung → DATEV« durch Unternehmer im Sinne des § 14 BGB und durch
+    Steuerkanzleien. Verbraucher werden nicht bedient.
+  </p>
+
+  <h2>2. Leistung</h2>
+  <p>
+    Das Werkzeug liest einen vom Nutzer bereitgestellten Amazon-Abrechnungsbericht im Browser, vergleicht die Summe der Zeilen mit der
+    Auszahlung und erzeugt eine Datei im DATEV-Format (EXTF Buchungsstapel). Die Prüfung und die Vorschau sind kostenlos. Der Download der
+    Datei setzt ein Abonnement voraus.
+  </p>
+
+  <h2>3. Buchungsvorschläge, Prüfpflicht</h2>
+  <p>
+    Das Werkzeug erzeugt Buchungsvorschläge auf Grundlage einer vom Nutzer oder seiner Steuerkanzlei festgelegten Kontenzuordnung. Vorbelegte
+    Konten sind Platzhalter oder Vorschläge. Kontenzuordnung, BU-Schlüssel und Umsatzsteuer-Behandlung legt und prüft der Nutzer
+    beziehungsweise seine Steuerkanzlei. Vor dem ersten Download bestätigt der Nutzer die Abstimmung der Kontenzuordnung. Das Werkzeug
+    ersetzt keine Steuer- oder Buchführungsberatung.
+  </p>
+
+  <h2>4. Abonnement und Preise</h2>
+  <p>
+    Es gibt die Tarife Händler (9 € pro Monat oder 89 € pro Jahr, eine Mandantennummer) und Kanzlei (29 € pro Monat oder 290 € pro Jahr, bis
+    zu 25 Mandantennummern). Alle Preise verstehen sich netto zuzüglich gesetzlicher Umsatzsteuer. Die Zahlung erfolgt per Kreditkarte
+    über Stripe; das Abonnement verlängert sich um die gewählte Laufzeit.
+  </p>
+
+  <h2>5. Kündigung</h2>
+  <p>
+    Sie können jederzeit zum Ende des laufenden Abrechnungszeitraums über das Stripe-Kundenportal kündigen. Mit dem Ende des
+    Abonnements wird der Lizenzschlüssel ungültig. Bereits erzeugte Dateien dürfen Sie weiter verwenden.
+  </p>
+
+  <h2>6. Haftung</h2>
+  <p>
+    Wir haften unbeschränkt bei Vorsatz und grober Fahrlässigkeit sowie bei Verletzung von Leben, Körper und Gesundheit. Bei leichter
+    Fahrlässigkeit haften wir nur bei Verletzung wesentlicher Vertragspflichten und begrenzt auf den vorhersehbaren, vertragstypischen
+    Schaden, höchstens auf die in den letzten zwölf Monaten gezahlte Vergütung. Für die inhaltliche Richtigkeit der Buchungen, die
+    Kontenzuordnung und die steuerliche Behandlung haften wir nicht. Zwingende gesetzliche Haftung bleibt unberührt.
+  </p>
+
+  <h2>7. Verfügbarkeit</h2>
+  <p>
+    Der Konverter ist kein Teil von Amazon oder DATEV. Änderungen von Formaten durch Amazon oder DATEV können Anpassungen erfordern; einen
+    Anspruch auf eine bestimmte Verfügbarkeit gibt es nicht.
+  </p>
+
+  <h2>8. Schlussbestimmungen</h2>
+  <p>Es gilt deutsches Recht. Gerichtsstand ist, soweit zulässig, der Sitz des Anbieters.</p>
 </Base>

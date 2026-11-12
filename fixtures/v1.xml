@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AmazonEnvelope><Header><DocumentVersion>1.02</DocumentVersion></Header><MessageType>SettlementReport</MessageType></AmazonEnvelope>

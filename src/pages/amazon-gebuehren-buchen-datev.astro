@@ -1,0 +1,134 @@
+---
+import Base from '../layouts/Base.astro';
+import skr03 from '../data/profiles/skr03.json';
+import skr04 from '../data/profiles/skr04.json';
+import { withBase } from '../lib/url';
+
+const groupLabel: Record<string, string> = {
+  sales: 'Umsatz',
+  fee: 'Gebühr',
+  reserve: 'Reserve',
+  other: 'Sonstiges',
+};
+const meaning: Record<string, string> = {
+  'ItemPrice|Principal': 'Verkaufspreis des Artikels',
+  'ItemPrice|Shipping': 'vom Käufer gezahlter Versand',
+  'ItemPrice|GiftWrap': 'Geschenkverpackung',
+  'ItemPrice|Tax': 'Umsatzsteuer auf den Artikel',
+  'ItemPrice|ShippingTax': 'Umsatzsteuer auf den Versand',
+  'ItemPrice|GiftWrapTax': 'Umsatzsteuer auf die Geschenkverpackung',
+  'ItemPrice|Goodwill': 'Kulanzerstattung',
+  'ItemPrice|RestockingFee': 'Wiedereinlagerungsgebühr bei Rückgabe',
+  'Promotion|Principal': 'Rabatt auf den Artikel',
+  'Promotion|Shipping': 'Rabatt auf den Versand',
+  'ItemFees|Commission': 'Verkaufsprovision',
+  'ItemFees|RefundCommission': 'Gebühr bei Erstattung',
+  'ItemFees|FBAPerUnitFulfillmentFee': 'FBA-Versandgebühr je Einheit',
+  'ItemFees|FBAWeightBasedFee': 'FBA-Gebühr nach Gewicht',
+  'ItemFees|VariableClosingFee': 'variable Abschlussgebühr',
+  'ItemFees|ShippingChargeback': 'Rückbelastung Versand',
+  'ItemFees|GiftwrapChargeback': 'Rückbelastung Geschenkverpackung',
+  'Other-Transaction|Storage Fee': 'Lagergebühr',
+  'Other-Transaction|FBATransportationFee': 'FBA-Transportgebühr',
+  'Other-Transaction|Refund Reimbursal': 'Erstattung an den Händler',
+  'Other-Transaction|Current Reserve Amount': 'einbehaltene Reserve dieser Abrechnung',
+  'Other-Transaction|Previous Reserve Amount Balance': 'freigegebene Reserve früherer Abrechnungen',
+};
+const note = skr03.reverseChargeNote;
+const rows = skr03.rows.map((r) => ({
+  ...r,
+  skr04: skr04.rows.find((x) => x.key === r.key)?.account ?? '',
+}));
+---
+
+<Base
+  title="Amazon-Gebühren buchen in DATEV: SKR03 und SKR04"
+  description="Jede bekannte Kombination aus amount-type und amount-description im Amazon-Abrechnungsbericht, ihre Gruppe und der Kontovorschlag für SKR03 und SKR04."
+>
+  <p class="section-label">Kontierung</p>
+  <h1>Amazon-Gebühren in DATEV buchen: Referenz nach SKR03 und SKR04</h1>
+  <div class="grid">
+    <div class="col-main">
+      <p class="lead">
+        Jede Zeile des Abrechnungsberichts hat einen <code>amount-type</code> und eine <code>amount-description</code>. Aus dieser Kombination
+        entscheidet der Konverter, auf welches Konto gebucht wird. Die Tabelle unten ist aus denselben Dateien erzeugt wie die Zuordnungstabelle im
+        Werkzeug. Beide laufen deshalb nicht auseinander.
+      </p>
+
+      <h2>Wie der Konverter bucht</h2>
+      <p>
+        Jede Buchung läuft über ein <strong>Amazon-Verrechnungskonto</strong>, das für das Guthaben bei Amazon steht. Umsätze, Erstattungen und
+        Rabatte werden gegen einen <strong>Sammeldebitor</strong> gebucht. Die Bestellnummer steht in Belegfeld 1, damit der OP-Ausgleich in DATEV
+        die Posten zuordnen kann. Gebühren gehen auf Aufwandskonten, Reservebewegungen auf ein Reservekonto. Die Auszahlung ist eine eigene
+        Buchung pro Abrechnung: Verrechnungskonto gegen Geldtransit, am Auszahlungstag.
+      </p>
+      <p>
+        Das Vorzeichen ergibt sich aus Sicht des Verrechnungskontos. Ein positiver Betrag erhöht das Guthaben bei Amazon und wird im Soll auf dem
+        Verrechnungskonto gebucht, ein negativer im Haben. Positionen mit gleicher Bestellnummer, gleichem Konto und gleichem Buchungsdatum werden
+        zusammengefasst, wenn die Option »je Bestellung« gesetzt ist. Zeilen ohne Bestellnummer, etwa Lagergebühren, werden je Beschreibung und
+        Datum zusammengefasst.
+      </p>
+
+      <h2>Alle bekannten Zuordnungen</h2>
+      <div class="scroll">
+        <table class="ledger">
+          <thead>
+            <tr>
+              <th>amount-type | amount-description</th>
+              <th>Bedeutung</th>
+              <th>Gruppe</th>
+              <th>SKR03</th>
+              <th>SKR04</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr>
+                <td class="num-left">{r.key}</td>
+                <td>{meaning[r.key] ?? ''}</td>
+                <td>{groupLabel[r.group]}</td>
+                <td class="num-left">{r.account || 'mit der Kanzlei festlegen'}</td>
+                <td class="num-left">{r.skr04 || 'mit der Kanzlei festlegen'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Warum viele Konten offen bleiben</h2>
+      <p>
+        Der Konverter liefert Kontovorschläge nur dort, wo die Nummer gegen den Kontenrahmen von DATEV geprüft und mit Quelle hinterlegt ist.
+        Solange das nicht der Fall ist, bleibt das Konto leer und der Export ist gesperrt, bis Sie oder Ihre Steuerkanzlei es eintragen. Das ist
+        gewollt: Ein geratenes Konto in einem Buchungsstapel kostet mehr Zeit als ein leeres Feld. Welche Konten im Einzelnen passen, hängt von
+        Ihrer Kontenstruktur, der Rechtsform und der Behandlung der Umsatzsteuer ab.
+      </p>
+
+      <h2>Reverse-Charge und BU-Schlüssel</h2>
+      <p>{note}</p>
+      <p>
+        Der BU-Schlüssel bleibt deshalb in allen Vorschlägen leer. Tragen Sie ihn in der Zuordnungstabelle ein, sobald die Kanzlei ihn festgelegt hat.
+        Vor dem ersten Download bestätigen Sie, dass die Zuordnung mit der Steuerkanzlei abgestimmt ist. Die Bestätigung gilt für genau diese
+        Zuordnung und wird zurückgesetzt, sobald Sie ein Konto, einen Schlüssel oder eine Einstellung ändern.
+      </p>
+
+      <h2>Unbekannte Beschreibungen</h2>
+      <p>
+        Amazon kann jederzeit neue Beschreibungen einführen. Kommt in Ihrer Datei eine Kombination vor, die nicht in der Tabelle steht, listet der
+        Konverter sie unter »Nicht zugeordnet« mit Anzahl und Summe. Der Download bleibt gesperrt, bis Sie ein Konto angegeben haben. So wird
+        keine Zeile stillschweigend ausgelassen, und die Summe der Buchungen bleibt gleich dem Auszahlungsbetrag.
+      </p>
+      <p>
+        Die Zuordnung der Werte stammt aus der
+        <a href="https://developer-docs.amazon/sp-api/docs/settlement-reports-attributes">Dokumentation von Amazon</a> und einer
+        <a href="https://help.intentwise.com/amazon-settlement-report-v1-to-v2-mapping-guide">Übersicht zur Umstellung von V1 auf V2</a>.
+        Welche Werte in Ihrem Konto tatsächlich vorkommen, zeigt Ihr eigener Bericht. Wie Sie ihn bekommen, steht auf der Seite zum
+        <a href={withBase('/amazon-abrechnungsbericht-flat-file-v2/')}>Abrechnungsbericht Flat File V2</a>.
+      </p>
+    </div>
+    <aside class="col-side">
+      <p class="label">Quelle</p>
+      <p>Kontenvorschläge: derzeit keine, bis sie gegen den DATEV-Kontenrahmen geprüft sind.</p>
+      <p><a href={withBase('/')}>Zum Konverter</a></p>
+    </aside>
+  </div>
+</Base>

@@ -1,0 +1,95 @@
+---
+import Base from '../layouts/Base.astro';
+import { withBase } from '../lib/url';
+---
+
+<Base
+  title="Amazon-Mandanten in DATEV: Buchungsstapel ohne API und ohne AVV"
+  description="Für Steuerkanzleien: Amazon-Abrechnungen von Mandanten als DATEV-Buchungsstapel, ohne Amazon-Zugang, ohne Auftragsverarbeitung, mit Kontenprofil zum Weitergeben."
+>
+  <p class="section-label">Für Kanzleien</p>
+  <h1>Amazon-Mandanten in DATEV: ein Kontenprofil, viele Abrechnungen</h1>
+  <div class="grid">
+    <div class="col-main">
+      <p class="lead">
+        Wenn der DATEV Zahlungsdatenservice für Amazon zum 15.08.2027 endet, müssen Kanzleien für jeden betroffenen Mandanten einen neuen Weg
+        finden. Dieser Konverter braucht dafür weder einen Zugang zum Amazon-Konto noch einen weiteren Cloud-Anbieter.
+      </p>
+
+      <h2>Kein Zugang, keine Auftragsverarbeitung</h2>
+      <p>
+        Der Mandant lädt seinen Abrechnungsbericht im Seller Central herunter und legt die Datei im Konverter ab. Die Datei wird im Browser
+        gelesen und nicht hochgeladen. Es gibt deshalb keine API-Freigabe im Amazon-Konto und keine Prüfung der Anwendung durch Amazon. Und weil
+        keine Mandantendaten an unsere Server gehen, entsteht dort keine Verarbeitung im Auftrag. Ob Ihre Kanzlei die Lage genauso bewertet,
+        entscheiden Sie mit Ihrem Datenschutzbeauftragten. Der Server sieht nur einen Lizenzschlüssel und einen SHA-256-Hash aus Berater- und
+        Mandantennummer.
+      </p>
+
+      <h2>Der Ablauf mit dem Kontenprofil</h2>
+      <p>
+        Das Kontenprofil ist eine kleine JSON-Datei mit der Zuordnung von <code>amount-type</code> und <code>amount-description</code> zu Konten,
+        BU-Schlüsseln und Buchungstext-Präfixen sowie den Einstellungen für Verrechnungskonto, Geldtransit, Sammeldebitor und Differenzkonto.
+        Berater- und Mandantennummer gehören nicht dazu.
+      </p>
+      <ul>
+        <li>Die Kanzlei legt das Profil einmal fest und exportiert es.</li>
+        <li>Der Mandant importiert die Datei. Er kann damit keine falschen Konten wählen, weil die Zuordnung vorgegeben ist.</li>
+        <li>Der Mandant trägt Berater- und Mandantennummer ein, prüft die Differenz zur Auszahlung und lädt die EXTF-Datei herunter.</li>
+        <li>Die Kanzlei importiert die Datei in DATEV. Der OP-Ausgleich läuft über die Bestellnummer in Belegfeld 1.</li>
+      </ul>
+      <p>
+        Vor dem ersten Download muss der Nutzer bestätigen, dass die Kontenzuordnung mit der Steuerkanzlei abgestimmt ist. Ändert sich die
+        Zuordnung, wird die Bestätigung zurückgesetzt.
+      </p>
+
+      <h2>Was die Prüfung zeigt</h2>
+      <p>
+        Vor jedem Export vergleicht der Konverter die Summe aller Zeilen mit dem Auszahlungsbetrag der Abrechnung. Stimmt die Summe, erscheint
+        »Saldo stimmt«. Sonst erscheint die Differenz, und der Export bleibt gesperrt, bis jemand bewusst »Trotzdem exportieren« wählt. Dann entsteht
+        genau eine sichtbare Differenzbuchung auf das Differenzkonto. Nichts wird versteckt. Zusätzlich zeigt die Prüfung die Summen je Konto, die
+        20 größten Buchungen, nicht zugeordnete Positionen und doppelte Zeilen. Doppelte Zeilen werden gezählt, aber nicht entfernt.
+      </p>
+
+      <h2>Wirtschafts­jahr und Dateigrenzen</h2>
+      <p>
+        Liegen Buchungen in verschiedenen Wirtschaftsjahren, entstehen getrennte Dateien. Jede Datei trägt im Kopf den Beginn ihres
+        Wirtschaftsjahres und ihren eigenen Datumsbereich. Mehr als 99.997 Buchungszeilen pro Datei werden auf weitere Dateien aufgeteilt. Wenn
+        mehrere Abrechnungen gleichzeitig abgelegt werden, kann der Konverter die Dateien als ZIP bereitstellen.
+      </p>
+
+      <h2>Was in der Datei steht</h2>
+      <p>
+        Die Datei ist ein EXTF-Buchungsstapel (Kopfversion 700, Kategorie 21, Formatversion 13) in Windows-1252 mit Semikolon als Trennzeichen,
+        Dezimalkomma und Zeilenende CRLF. Im Kopf stehen Berater- und Mandantennummer, der Beginn des Wirtschaftsjahres, die Sachkontenlänge und
+        der Datumsbereich der Datei. Die Buchungen sind nicht festgeschrieben (Festschreibung 0), Sie können sie also nach dem Import noch
+        ändern. Der Dateiname enthält die Abrechnungsnummer und den Datumsbereich, damit jede Datei einer Abrechnung zugeordnet werden kann.
+      </p>
+      <p>
+        Die Spaltenliste des Buchungsstapels steht in einer eigenen Konstantendatei mit Quellenangabe. Ein Probeimport durch eine Kanzlei in DATEV
+        Kanzlei-Rechnungswesen oder DATEV Unternehmen online ist vor dem Livegang vorgesehen und kann von uns nicht ersetzt werden.
+      </p>
+
+      <h2>Tarif für Kanzleien</h2>
+      <p>
+        Der Tarif Kanzlei kostet 29 € im Monat oder 290 € im Jahr, jeweils netto zuzüglich Umsatzsteuer, und gilt für bis zu 25 Mandantennummern.
+        Jede neue Kombination aus Berater- und Mandantennummer zählt einmal. Details und der Tarif Händler stehen auf der
+        <a href={withBase('/preise/')}>Preisseite</a>. Zum Vergleich: Der ISWL Zahlungsdaten-Konverter von DATEV kostet laut Shop ab 25,00 € im Monat und
+        verlangt, dass Sie die Vorlage für Amazon selbst einrichten.
+      </p>
+
+      <h2>Was Sie selbst prüfen müssen</h2>
+      <p>
+        Der Konverter erzeugt Buchungsvorschläge. Konten, BU-Schlüssel und die umsatzsteuerliche Behandlung legt die Kanzlei fest. Amazon-Gebühren
+        werden von Amazon EU S.à r.l. (Luxemburg) berechnet und unterliegen in der Regel dem Reverse-Charge-Verfahren; der passende BU-Schlüssel
+        bleibt deshalb in den Vorschlägen leer. Testen Sie die erste erzeugte Datei in einer Testumgebung, bevor Sie festschreiben. Mehr zur
+        Umstellung steht im Leitfaden zum
+        <a href={withBase('/datev-zahlungsdatenservice-amazon-alternative/')}>Ende des Zahlungsdatenservice</a>.
+      </p>
+      <p><a class="btn" href={withBase('/')}>Konverter öffnen</a></p>
+    </div>
+    <aside class="col-side">
+      <p class="label">Hinweis</p>
+      <p>Es gibt keine Benutzerkonten. Der Lizenzschlüssel steht auf jeder Stripe-Rechnung.</p>
+    </aside>
+  </div>
+</Base>

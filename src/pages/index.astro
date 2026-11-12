@@ -1,18 +1,84 @@
 ---
 import Base from '../layouts/Base.astro';
+import Converter from '../components/tool/Converter';
+import { withBase } from '../lib/url';
 ---
 
 <Base
   title="Amazon-Abrechnung in DATEV-Buchungsstapel umwandeln"
   description="Amazon-Abrechnungsbericht (Flat File V2) im Browser prüfen und als DATEV-Buchungsstapel (EXTF) exportieren. Die Datei wird nicht hochgeladen."
 >
-  <p class="section-label">01 Datei</p>
   <h1>Amazon-Abrechnung zu DATEV</h1>
-  <p>
-    Der Konverter entsteht gerade. Hier wird der Abrechnungsbericht (Flat File V2) abgelegt, geprüft und als
-    DATEV-Buchungsstapel ausgegeben.
+  <p class="lead">
+    Legen Sie den Abrechnungsbericht (Flat File V2) ab. Sie sehen, ob die Summe der Zeilen zur Auszahlung passt, bevor eine
+    Datei entsteht.
   </p>
-  <p class="notice">
-    <span class="label">Hinweis</span>Die Datei wird ausschließlich in Ihrem Browser verarbeitet und nicht hochgeladen.
-  </p>
+  <Converter client:load />
+
+  <hr class="rule-heavy" />
+  <p class="section-label">04 Ablauf</p>
+  <div class="grid">
+    <div class="col-main">
+      <h2>So arbeitet der Konverter</h2>
+      <p>
+        Sie laden im Seller Central den Abrechnungsbericht im Format Flat File V2 herunter und legen ihn oben ab. Der Konverter liest die Datei in
+        Ihrem Browser und vergleicht die Summe aller Zeilen mit dem Auszahlungsbetrag. Stimmt sie, steht dort »Saldo stimmt«. Stimmt sie nicht,
+        sehen Sie die Differenz, bevor irgendeine Datei entsteht.
+      </p>
+      <p>
+        Dann ordnen Sie jede Art von Zeile einem Konto zu, am besten mit Ihrer Steuerkanzlei, die das Kontenprofil einmal festlegt. Die
+        Vorschau zeigt die ersten 25 Buchungszeilen genau so, wie sie in der Datei stehen.
+      </p>
+      <p>
+        Der Download erzeugt den DATEV-Buchungsstapel im Format EXTF, in Windows-1252 kodiert. Er ist kostenpflichtig, die Prüfung ist es nicht.
+        Die Datei wird ausschließlich in Ihrem Browser verarbeitet und nicht hochgeladen.
+      </p>
+
+      <h2>Was in den Buchungsstapel kommt</h2>
+      <table class="ledger">
+        <thead>
+          <tr><th>Buchung</th><th>Konto</th><th>Gegenkonto</th><th>Belegfeld 1</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Umsätze, Versand, Rabatte</td><td>Verrechnungskonto</td><td>Sammeldebitor</td><td>Bestellnummer</td></tr>
+          <tr><td>Gebühren</td><td>Verrechnungskonto</td><td>Aufwandskonto</td><td>Bestellnummer oder Abrechnungsnummer</td></tr>
+          <tr><td>Reserve</td><td>Verrechnungskonto</td><td>Reservekonto</td><td>Abrechnungsnummer</td></tr>
+          <tr><td>Auszahlung</td><td>Verrechnungskonto</td><td>Geldtransit</td><td>Abrechnungsnummer</td></tr>
+          <tr><td>Differenz (nur auf Wunsch)</td><td>Verrechnungskonto</td><td>Differenzkonto</td><td>Abrechnungsnummer</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Häufige Fragen</h2>
+      <details>
+        <summary>Wird meine Datei hochgeladen?</summary>
+        <p>Nein. Die Datei wird im Browser gelesen. Beim Download gehen nur Lizenzschlüssel und ein Hash aus Berater- und Mandantennummer an den Server.</p>
+      </details>
+      <details>
+        <summary>Welche Berichte werden gelesen?</summary>
+        <p>Der Abrechnungsbericht im Format Flat File V2 in EUR. Den alten Bericht (V1, XML) liefert Amazon seit dem 11.11.2026 nicht mehr; der Konverter weist ihn zurück.</p>
+      </details>
+      <details>
+        <summary>Was passiert bei einer Differenz?</summary>
+        <p>Der Export bleibt gesperrt. Wenn Sie bewusst »Trotzdem exportieren« wählen, entsteht genau eine Differenzbuchung auf das von Ihnen genannte Konto.</p>
+      </details>
+      <details>
+        <summary>Wer legt die Konten fest?</summary>
+        <p>Sie oder Ihre Steuerkanzlei. Vorschläge sind keine Buchungsempfehlung, und die Bestätigung der Abstimmung ist vor dem ersten Download Pflicht.</p>
+      </details>
+      <details>
+        <summary>Was kostet der Download?</summary>
+        <p>Händler 9 € im Monat oder 89 € im Jahr, Kanzlei 29 € im Monat oder 290 € im Jahr, netto. Details auf der <a href={withBase('/preise/')}>Preisseite</a>.</p>
+      </details>
+    </div>
+    <aside class="col-side">
+      <p class="label">Weiterlesen</p>
+      <ul>
+        <li><a href={withBase('/datev-zahlungsdatenservice-amazon-alternative/')}>Ende des DATEV Zahlungsdatenservice für Amazon</a></li>
+        <li><a href={withBase('/amazon-abrechnungsbericht-flat-file-v2/')}>Abrechnungsbericht Flat File V2</a></li>
+        <li><a href={withBase('/amazon-gebuehren-buchen-datev/')}>Amazon-Gebühren buchen</a></li>
+        <li><a href={withBase('/steuerkanzlei/')}>Für Steuerkanzleien</a></li>
+        <li><a href={withBase('/preise/')}>Preise</a></li>
+      </ul>
+    </aside>
+  </div>
 </Base>

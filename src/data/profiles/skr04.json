@@ -1,0 +1,161 @@
+{
+  "chart": "SKR04",
+  "reverseChargeNote": "Amazon-Gebühren werden von Amazon EU S.à r.l. (Luxemburg) berechnet und unterliegen in der Regel dem Reverse-Charge-Verfahren. Den passenden BU-Schlüssel legt Ihre Steuerkanzlei fest.",
+  "notes": "Kein Konto ist vorbelegt: Der Builder hat keinen Webzugriff und konnte keine Kontonummer gegen den DATEV-Kontenrahmen (PDF auf datev.de) prüfen. Ein Mensch trägt Konten zusammen mit einer Quelle im Feld source ein.",
+  "rows": [
+    {
+      "key": "ItemPrice|Principal",
+      "group": "sales",
+      "account": "",
+      "source": "",
+      "bu": ""
+    },
+    {
+      "key": "ItemPrice|Shipping",
+      "group": "sales",
+      "account": "",
+      "source": "",
+      "bu": ""
+    },
+    {
+      "key": "ItemPrice|GiftWrap",
+      "group": "sales",
+      "account": "",
+      "source": "",
+      "bu": ""
+    },
+    {
+      "key": "ItemPrice|Tax",
+      "group": "sales",
+      "account": "",
+      "source": "",
+      "bu": ""
+    },
+    {
+      "key": "ItemPrice|ShippingTax",
+      "group": "sales",
+      "account": "",
+      "source": "",
+      "bu": ""
+    },
+    {
+      "key": "ItemPrice|GiftWrapTax",
+      "group": "sales",
+      "account": "",
+      "source": "",
+      "bu": ""
+    },
+    {
+      "key": "ItemPrice|Goodwill",
+      "group": "sales",
+      "account": "",
+      "source": "",
+      "bu": ""
+    },
+    {
+      "key": "ItemPrice|RestockingFee",
+      "group": "sales",
+      "account": "",
+      "source": "",
+      "bu": ""
+    },
+    {
+      "key": "Promotion|Principal",
+      "group": "sales",
+      "account": "",
+      "source": "",
+      "bu": ""
+    },
+    {
+      "key": "Promotion|Shipping",
+      "group": "sales",
+      "account": "",
+      "source": "",
+      "bu": ""
+    },
+    {
+      "key": "ItemFees|Commission",
+      "group": "fee",
+      "account": "",
+      "source": "",
+      "bu": ""
+    },
+    {
+      "key": "ItemFees|RefundCommission",
+      "group": "fee",
+      "account": "",
+      "source": "",
+      "bu": ""
+    },
+    {
+      "key": "ItemFees|FBAPerUnitFulfillmentFee",
+      "group": "fee",
+      "account": "",
+      "source": "",
+      "bu": ""
+    },
+    {
+      "key": "ItemFees|FBAWeightBasedFee",
+      "group": "fee",
+      "account": "",
+      "source": "",
+      "bu": ""
+    },
+    {
+      "key": "ItemFees|VariableClosingFee",
+      "group": "fee",
+      "account": "",
+      "source": "",
+      "bu": ""
+    },
+    {
+      "key": "ItemFees|ShippingChargeback",
+      "group": "fee",
+      "account": "",
+      "source": "",
+      "bu": ""
+    },
+    {
+      "key": "ItemFees|GiftwrapChargeback",
+      "group": "fee",
+      "account": "",
+      "source": "",
+      "bu": ""
+    },
+    {
+      "key": "Other-Transaction|Storage Fee",
+      "group": "fee",
+      "account": "",
+      "source": "",
+      "bu": ""
+    },
+    {
+      "key": "Other-Transaction|FBATransportationFee",
+      "group": "fee",
+      "account": "",
+      "source": "",
+      "bu": ""
+    },
+    {
+      "key": "Other-Transaction|Refund Reimbursal",
+      "group": "other",
+      "account": "",
+      "source": "",
+      "bu": ""
+    },
+    {
+      "key": "Other-Transaction|Current Reserve Amount",
+      "group": "reserve",
+      "account": "",
+      "source": "",
+      "bu": ""
+    },
+    {
+      "key": "Other-Transaction|Previous Reserve Amount Balance",
+      "group": "reserve",
+      "account": "",
+      "source": "",
+      "bu": ""
+    }
+  ]
+}
