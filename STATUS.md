@@ -1,6 +1,6 @@
 # Amazon-Abrechnung zu DATEV: Settlement-Bericht im Browser in einen DATEV-Buchungsstapel umwandeln
 
-**Stage:** qa · **Platform:** web · **Score:** 3/5 · **Spend:** $10.65
+**Stage:** parked · **Platform:** web · **Score:** 3/5 · **Spend:** $10.65
 
 For German Amazon sellers whose tax advisor books in DATEV and who rely on DATEV's Zahlungsdatenservice für Amazon (end 2027-08-15, known data gaps): upload the Amazon settlement report and download a checked DATEV EXTF booking batch (sales, fees, refunds, payout reconciliation) without granting API access. If it takes off it becomes the settlement-to-DATEV converter for every marketplace (eBay, Kaufland, Etsy) that tax advisors recommend to their clients.
 
@@ -8,6 +8,7 @@ For German Amazon sellers whose tax advisor books in DATEV and who rely on DATEV
 
 ## Needs you
 
+- [ ] Parked: QA still failing after 3 rounds: Legal pages: the impressum page does not show "HRB 4400" (the company text was changed or not used). Show src/content/legal/impressum.<lang>.html and datenschutz.<lang>.html unchanged on /impressum and /datenschutz (see src/content/legal/LEGAL.md). | Legal pages: the impressum page does not show "D…. Fix it, then `npm run studio -- unpark amazon-abrechnung-zu-datev-settlement-bericht-im`, or `npm run studio -- kill amazon-abrechnung-zu-datev-settlement-bericht-im`
 - [ ] [task 1] Download one real Amazon.de settlement Flat File V2 from Seller Central, anonymise it, put it in fixtures/real/ and confirm the menu path and the date and number formats (before going live, not a QA gate)
 - [ ] [task 2] Have a tax firm or DATEV user test-import one generated EXTF_*.csv into DATEV and confirm it imports and that OP-Ausgleich by order ID works
 - [ ] [task 3] Create a Stripe account, create the 4 prices, add STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET and STRIPE_PRICE_* as env vars, enable invoice emails and the Customer Portal, and set up VAT handling; go live only after the two checks above
@@ -90,7 +91,6 @@ subscription (Händler 9 EUR/month or 89 EUR/year (1 Mandantennummer); Kanzlei 2
 
 ## History
 
-- 2026-11-12 21:38 · planned · scaffold and plan written
 - 2026-11-12 21:56 · building · build started
 - 2026-11-12 21:56 · seo · all planned tasks done
 - 2026-11-12 22:02 · qa · seo and conversion foundations written
@@ -102,3 +102,4 @@ subscription (Händler 9 EUR/month or 89 EUR/year (1 Mandantennummer); Kanzlei 2
 - 2026-11-12 22:49 · qa · all planned tasks done
 - 2026-11-12 22:55 · building · QA round 2 found 1 blocker(s)
 - 2026-11-12 23:01 · qa · all planned tasks done
+- 2026-11-12 23:03 · parked · QA still failing after 3 rounds: Legal pages: the impressum page does not show "HRB 4400" (the company text was changed or not used). Show src/content/legal/impressum.<lang>.html and datenschutz.<lang>.html unchanged on /impressum and /datenschutz (see src/content/legal/LEGAL.md). | Legal pages: the impressum page does not show "D…
