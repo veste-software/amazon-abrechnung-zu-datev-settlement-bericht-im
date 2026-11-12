@@ -56,7 +56,7 @@ scripts/                    design-check.mjs (studio-owned), size.mjs, make-fixt
 - Client code makes exactly one kind of network call: `POST /api/licence/check` with `{licenceKey, hash}`. Never send file content, amounts, order IDs or plain Berater-/Mandantennummer anywhere. Checkout is a plain HTML form POST to `/api/checkout`, not a fetch.
 - On the GitHub Pages preview there are no Functions: the tool must still work fully up to the paywall, and the plans dialog says purchase is not available there.
 - UI text is German, formal "Sie", voice as in DESIGN.md. Errors name the row and the value.
-- Look: follow DESIGN.md. No coloured side borders, no rounded cards, no shadows, no icon packs, no emoji. Numbers in IBM Plex Mono with tabular numerals. Run `npm run design-check` after any style change.
+- Look: follow DESIGN.md (brand "Grünband"); tokens and base styles live in `src/styles/brand.css`. No gradients anywhere, no coloured side borders, no rounded cards, no shadows except the flat zero-blur "Durchschlag" offset from brand.css, no icon packs, no emoji. Illustrations are in `public/art/`, the mark in `public/brand/logo.svg`. Numbers in IBM Plex Mono with tabular numerals. Run `npm run design-check` after any style change.
 - Analytics: Cloudflare Web Analytics only, cookie-free, loaded when `PUBLIC_CF_BEACON_TOKEN` is set. Events carry names only, never data.
 - DATEV format: EXTF header version 700, category 21, "Buchungsstapel", format version 13; all column names live in `src/lib/datev/columns.ts` with the source URL in a comment. Windows-1252, CRLF, `;`, decimal comma.
 - Fixtures are synthetic and say so; never present them as real Amazon data.

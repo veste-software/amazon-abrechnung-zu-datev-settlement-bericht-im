@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="1200" height="720" role="img">
+  <title>Ein loser Amazon-Abrechnungsbericht läuft als grün gebänderter Endlospapierstreifen durch die Prüfung, wird mit 0,00 abgestempelt und endet als geordneter DATEV-Buchungsstapel.</title>
+  <defs>
+    <!-- raw tab-separated rows of the Amazon file: irregular cells -->
+    <g id="rawA" fill="#24292B"><rect x="134" width="24" height="6"/><rect x="166" width="56" height="6"/><rect x="232" width="18" height="6"/><rect x="262" width="40" height="6"/><rect x="314" width="28" height="6"/></g>
+    <g id="rawB" fill="#24292B"><rect x="134" width="24" height="6"/><rect x="166" width="40" height="6"/><rect x="216" width="62" height="6"/><rect x="290" width="20" height="6"/><rect x="320" width="22" height="6"/></g>
+    <g id="rawC" fill="#24292B"><rect x="134" width="24" height="6"/><rect x="166" width="56" height="6"/><rect x="232" width="30" height="6"/><rect x="272" width="34" height="6"/><rect x="316" width="26" height="6"/></g>
+    <!-- sprocket holes along the strip, seen through to the green desk -->
+    <g id="stripHoles" fill="#C8D9BF"><circle cx="316" r="6"/><circle cx="348" r="6"/><circle cx="380" r="6"/><circle cx="412" r="6"/><circle cx="444" r="6"/><circle cx="476" r="6"/><circle cx="508" r="6"/><circle cx="540" r="6"/><circle cx="572" r="6"/><circle cx="604" r="6"/><circle cx="636" r="6"/><circle cx="668" r="6"/><circle cx="700" r="6"/><circle cx="732" r="6"/><circle cx="764" r="6"/><circle cx="796" r="6"/><circle cx="828" r="6"/><circle cx="860" r="6"/></g>
+    <!-- booking line on the strip: Konto, Gegenkonto, Datum -->
+    <g id="stripRow" fill="#24292B"><rect x="390" width="32" height="6"/><rect x="432" width="32" height="6"/><rect x="730" width="40" height="6"/></g>
+    <!-- booking line on the stack: Konto, Gegenkonto -->
+    <g id="pileRow" fill="#24292B"><rect x="904" width="28" height="6"/><rect x="940" width="28" height="6"/></g>
+    <!-- sprocket holes down the stack sheet, seen through to paper -->
+    <g id="pileHoles" fill="#E4DFD2"><circle cy="240" r="5"/><circle cy="272" r="5"/><circle cy="304" r="5"/><circle cy="336" r="5"/><circle cy="368" r="5"/><circle cy="400" r="5"/><circle cy="432" r="5"/><circle cy="464" r="5"/><circle cy="496" r="5"/><circle cy="528" r="5"/></g>
+  </defs>
+
+  <!-- the desk -->
+  <rect x="64" y="96" width="1072" height="544" fill="#E2EDDC"/>
+
+  <!-- flat shadows: 14 units down-right, in the desk's shade -->
+  <polygon points="124,214 336,214 380,258 380,574 124,574" fill="#C8D9BF" transform="rotate(-6 238 380)"/>
+  <rect x="314" y="344" width="600" height="140" fill="#C8D9BF"/>
+
+  <!-- the strip of green-bar continuous paper (the conversion) -->
+  <rect x="300" y="330" width="600" height="140" fill="#F6F3EA" stroke="#24292B" stroke-width="4"/>
+  <rect x="302" y="358" width="596" height="28" fill="#E2EDDC"/>
+  <rect x="302" y="414" width="596" height="28" fill="#E2EDDC"/>
+  <use href="#stripHoles" y="343"/>
+  <use href="#stripHoles" y="457"/>
+  <path d="M300 356H900M300 444H900" fill="none" stroke="#24292B" stroke-width="4" stroke-dasharray="2 10"/>
+  <use href="#stripRow" y="362"/>
+  <use href="#stripRow" y="376"/>
+  <use href="#stripRow" y="390"/>
+  <use href="#stripRow" y="404"/>
+  <use href="#stripRow" y="418"/>
+  <use href="#stripRow" y="432"/>
+  <g fill="#24292B">
+    <rect x="476" y="362" width="72" height="6"/><rect x="840" y="362" width="44" height="6"/>
+    <rect x="476" y="376" width="48" height="6"/><rect x="824" y="376" width="60" height="6"/>
+    <rect x="476" y="390" width="80" height="6"/><rect x="848" y="390" width="36" height="6"/>
+    <rect x="476" y="404" width="56" height="6"/><rect x="832" y="404" width="52" height="6"/>
+    <rect x="476" y="418" width="64" height="6"/><rect x="844" y="418" width="40" height="6"/>
+    <rect x="476" y="432" width="44" height="6"/><rect x="828" y="432" width="56" height="6"/>
+  </g>
+
+  <!-- the imprint: difference 0,00 -->
+  <g transform="rotate(-4 610 400)">
+    <rect x="530" y="352" width="160" height="96" fill="#F6F3EA" stroke="#2E6A3A" stroke-width="4"/>
+    <rect x="540" y="362" width="140" height="76" fill="none" stroke="#2E6A3A" stroke-width="4"/>
+    <rect x="559" y="383" width="24" height="34" rx="11" fill="none" stroke="#2E6A3A" stroke-width="4"/>
+    <polygon points="590,410 598,410 594,423 586,423" fill="#2E6A3A"/>
+    <rect x="605" y="383" width="24" height="34" rx="11" fill="none" stroke="#2E6A3A" stroke-width="4"/>
+    <rect x="637" y="383" width="24" height="34" rx="11" fill="none" stroke="#2E6A3A" stroke-width="4"/>
+  </g>
+
+  <!-- the loose Amazon settlement sheet (input) -->
+  <g transform="rotate(-6 238 380)">
+    <polygon points="110,200 322,200 366,244 366,560 110,560" fill="#F6F3EA" stroke="#24292B" stroke-width="4" stroke-linejoin="miter"/>
+    <polygon points="322,200 322,244 366,244" fill="#E4DFD2" stroke="#24292B" stroke-width="4" stroke-linejoin="miter"/>
+    <g fill="#24292B">
+      <rect x="134" y="258" width="44" height="8"/><rect x="188" y="258" width="36" height="8"/><rect x="234" y="258" width="52" height="8"/>
+      <rect x="134" y="290" width="60" height="6"/><rect x="204" y="290" width="40" height="6"/><rect x="254" y="290" width="22" height="6"/><rect x="292" y="290" width="44" height="6"/>
+    </g>
+    <rect x="284" y="280" width="60" height="26" fill="none" stroke="#B0281F" stroke-width="4"/>
+    <use href="#rawA" y="322"/>
+    <use href="#rawB" y="348"/>
+    <use href="#rawC" y="374"/>
+    <use href="#rawA" y="400"/>
+    <use href="#rawC" y="426"/>
+    <use href="#rawB" y="452"/>
+    <use href="#rawA" y="478"/>
+    <use href="#rawB" y="504"/>
+    <use href="#rawC" y="530"/>
+  </g>
+
+  <!-- the DATEV booking stack (output) -->
+  <rect x="902" y="210" width="230" height="330" fill="#C8D9BF"/>
+  <rect x="888" y="222" width="230" height="330" fill="#C8D9BF"/>
+  <rect x="874" y="234" width="230" height="330" fill="#C8D9BF"/>
+  <rect x="888" y="196" width="230" height="330" fill="#F6F3EA" stroke="#24292B" stroke-width="4"/>
+  <rect x="874" y="208" width="230" height="330" fill="#F6F3EA" stroke="#24292B" stroke-width="4"/>
+  <rect x="860" y="220" width="230" height="330" fill="#F6F3EA" stroke="#24292B" stroke-width="4"/>
+  <rect x="890" y="264" width="170" height="48" fill="#E2EDDC"/>
+  <rect x="890" y="360" width="170" height="48" fill="#E2EDDC"/>
+  <use href="#pileHoles" x="874"/>
+  <use href="#pileHoles" x="1076"/>
+  <path d="M888 224V546M1062 224V546" fill="none" stroke="#24292B" stroke-width="4" stroke-dasharray="2 10"/>
+  <rect x="904" y="238" width="72" height="8" fill="#24292B"/>
+  <rect x="890" y="254" width="170" height="4" fill="#24292B"/>
+  <use href="#pileRow" y="269"/>
+  <use href="#pileRow" y="285"/>
+  <use href="#pileRow" y="301"/>
+  <use href="#pileRow" y="317"/>
+  <use href="#pileRow" y="333"/>
+  <use href="#pileRow" y="349"/>
+  <use href="#pileRow" y="365"/>
+  <use href="#pileRow" y="381"/>
+  <use href="#pileRow" y="397"/>
+  <use href="#pileRow" y="413"/>
+  <use href="#pileRow" y="429"/>
+  <use href="#pileRow" y="445"/>
+  <g fill="#24292B">
+    <rect x="1006" y="269" width="40" height="6"/><rect x="1018" y="285" width="28" height="6"/><rect x="994" y="301" width="52" height="6"/>
+    <rect x="1010" y="317" width="36" height="6"/><rect x="1002" y="333" width="44" height="6"/><rect x="1022" y="349" width="24" height="6"/>
+    <rect x="998" y="365" width="48" height="6"/><rect x="1014" y="381" width="32" height="6"/><rect x="990" y="397" width="56" height="6"/>
+    <rect x="1006" y="413" width="40" height="6"/><rect x="1018" y="429" width="28" height="6"/><rect x="1002" y="445" width="44" height="6"/>
+    <rect x="990" y="462" width="56" height="4"/>
+    <rect x="998" y="476" width="48" height="8"/>
+  </g>
+  <rect x="986" y="494" width="60" height="4" fill="#B0281F"/>
+  <rect x="986" y="502" width="60" height="4" fill="#B0281F"/>
+
+  <!-- the rubber stamp, just lifted -->
+  <g transform="rotate(-4 610 300)">
+    <rect x="594" y="172" width="32" height="56" fill="#F6F3EA" stroke="#24292B" stroke-width="4"/>
+    <circle cx="610" cy="148" r="32" fill="#24292B"/>
+    <rect x="528" y="226" width="164" height="34" fill="#24292B"/>
+    <rect x="576" y="236" width="68" height="14" fill="#F6F3EA"/>
+    <rect x="584" y="241" width="52" height="4" fill="#2E6A3A"/>
+    <rect x="536" y="260" width="148" height="12" fill="#2E6A3A"/>
+  </g>
+</svg>

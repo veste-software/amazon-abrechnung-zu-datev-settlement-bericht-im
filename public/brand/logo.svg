@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Grünband mark: a sheet of continuous paper on the stack, sprocket holes, two green bars, the red double rule of a closed total -->
+  <rect x="10" y="10" width="50" height="50" fill="#24292B"/>
+  <rect x="4" y="4" width="50" height="50" fill="#F6F3EA" stroke="#24292B" stroke-width="4"/>
+  <circle cx="13" cy="14.5" r="3.5" fill="#24292B"/>
+  <circle cx="13" cy="28.5" r="3.5" fill="#24292B"/>
+  <circle cx="13" cy="44.5" r="3.5" fill="#24292B"/>
+  <rect x="22" y="10" width="30" height="9" fill="#2E6A3A"/>
+  <rect x="22" y="24" width="30" height="9" fill="#2E6A3A"/>
+  <rect x="28" y="39" width="20" height="4" fill="#B0281F"/>
+  <rect x="28" y="46" width="20" height="4" fill="#B0281F"/>
+</svg>

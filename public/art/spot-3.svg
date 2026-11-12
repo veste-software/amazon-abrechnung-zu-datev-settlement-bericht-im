@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="480" height="360" role="img">
+  <title>Der fertige Buchungsstapel als gefaltetes Endlospapier, die Summe doppelt rot unterstrichen.</title>
+  <rect x="48" y="56" width="384" height="264" fill="#E2EDDC"/>
+
+  <!-- the last sheet, standing up out of the stack -->
+  <rect x="136" y="64" width="208" height="150" fill="#F6F3EA" stroke="#24292B" stroke-width="4"/>
+  <rect x="166" y="80" width="148" height="42" fill="#E2EDDC"/>
+  <g fill="#E4DFD2">
+    <circle cx="150" cy="84" r="5"/><circle cx="150" cy="112" r="5"/><circle cx="150" cy="140" r="5"/><circle cx="150" cy="168" r="5"/><circle cx="150" cy="196" r="5"/>
+    <circle cx="330" cy="84" r="5"/><circle cx="330" cy="112" r="5"/><circle cx="330" cy="140" r="5"/><circle cx="330" cy="168" r="5"/><circle cx="330" cy="196" r="5"/>
+  </g>
+  <path d="M164 66V200M316 66V200" fill="none" stroke="#24292B" stroke-width="4" stroke-dasharray="2 10"/>
+  <g fill="#24292B">
+    <rect x="176" y="84" width="24" height="6"/><rect x="266" y="84" width="40" height="6"/>
+    <rect x="176" y="98" width="24" height="6"/><rect x="278" y="98" width="28" height="6"/>
+    <rect x="176" y="112" width="24" height="6"/><rect x="258" y="112" width="48" height="6"/>
+    <rect x="176" y="126" width="24" height="6"/><rect x="274" y="126" width="32" height="6"/>
+    <rect x="176" y="140" width="24" height="6"/><rect x="262" y="140" width="44" height="6"/>
+    <rect x="262" y="154" width="44" height="4"/>
+  </g>
+  <rect x="254" y="166" width="52" height="4" fill="#B0281F"/>
+  <rect x="254" y="174" width="52" height="4" fill="#B0281F"/>
+
+  <!-- the zig-zag folded stack -->
+  <rect x="126" y="214" width="256" height="100" fill="#C8D9BF"/>
+  <rect x="112" y="200" width="256" height="20" fill="#F6F3EA"/>
+  <rect x="112" y="220" width="256" height="20" fill="#E2EDDC"/>
+  <rect x="112" y="240" width="256" height="20" fill="#F6F3EA"/>
+  <rect x="112" y="260" width="256" height="20" fill="#E2EDDC"/>
+  <rect x="112" y="280" width="256" height="20" fill="#F6F3EA"/>
+  <path d="M112 200H368M112 220H368M112 240H368M112 260H368M112 280H368M112 300H368M112 200V220M368 280V300" fill="none" stroke="#24292B" stroke-width="4"/>
+  <path d="M368 200A20 20 0 0 1 368 240" fill="#F6F3EA" stroke="#24292B" stroke-width="4"/>
+  <path d="M368 240A20 20 0 0 1 368 280" fill="#F6F3EA" stroke="#24292B" stroke-width="4"/>
+  <path d="M112 220A20 20 0 0 0 112 260" fill="#F6F3EA" stroke="#24292B" stroke-width="4"/>
+  <path d="M112 260A20 20 0 0 0 112 300" fill="#F6F3EA" stroke="#24292B" stroke-width="4"/>
+</svg>

@@ -4,6 +4,15 @@ Ordered. Each task is one focused session and ends green on `npm test` and `npm 
 
 The first eight tasks give a thin but working tool end to end on the preview: drop `normal.tsv`, see "Saldo stimmt", see the 25-line preview. Everything after widens it.
 
+## Brand kit (Designer)
+
+- [ ] Use the brand kit: import src/styles/brand.css everywhere, put the logo in the header, build the first screen as described in DESIGN.md with the working tool visible at once, place the hero and spot illustrations
+  - Import `../styles/brand.css` in `Base.astro` (it imports the fonts itself, including Archivo's width axis, so drop the four font imports there). Delete from `global.css` everything `brand.css` now defines (tokens, `.paper`, `.ledger`, buttons, fields, `.dropzone`, notices, stamp), above all the `radial-gradient` and both `repeating-linear-gradient`s; the preview `<pre>` gets class `bands`. `npm run design-check` must report nothing.
+  - Header: `<a class="brand">` with `<img class="brand-mark" src={withBase('/brand/logo.svg')} alt="">`, `<span class="brand-name">Grünband</span>`, `<span class="brand-desc">Amazon-Abrechnung → DATEV</span>`. Titles end with "· Grünband"; JSON-LD name "Grünband – Amazon-Abrechnung zu DATEV".
+  - `/`: `.intro` (eyebrow, H1 "Amazon-Abrechnung in DATEV-Buchungen umwandeln", lead) beside `.intro-art` with `art/hero.svg`; then the island. In the island the drop zone gets the markup from DESIGN.md §8 (`spot-empty.svg` as `.dropzone-art`, `.dropzone-title`, `.dropzone-meta`, one `btn btn-primary` "Abrechnung auswählen", `data-state` over/working/done/error), followed by `.tool-foot` (privacy sentence + price line). Start the settings `<details>` closed so the first screen stays calm.
+  - The download button and the plan buttons use `btn-primary` (Journalgrün), not red. Red is only for differences, errors and focus. In the check view, show `spot-difference.svg` (max 12rem) next to the figure when there is a difference.
+  - Below the tool: `.art-mobile` with the hero (mobile only), then the three steps as `<ol class="steps">` with `spot-1/2/3.svg`, then table, FAQ (`details.faq`), links. All `src` through `withBase`, images with `alt=""` where the text says it already.
+
 ## Foundation
 
 - [x] **1. Design foundation.** Build `src/components/Stamp.astro` and `src/components/Stamp.tsx` (inline SVG stamp, green "SALDO STIMMT" and red "DIFFERENZ x,xx €" states, feTurbulence ink filter, −3° rotation, 150 ms press only without reduced motion) as described in DESIGN.md. Put a static specimen on `/` under the placeholder text (one green stamp, one banded `.ledger` table with 7 synthetic rows, one primary and one disabled button, one `.field`). Check: `npm run design-check` passes, `npm run build` passes, sprocket margins and green bars visible in `dist/index.html` markup classes.

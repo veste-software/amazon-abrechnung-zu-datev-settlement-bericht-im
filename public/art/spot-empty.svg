@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="480" height="360" role="img">
+  <title>Ein leerer Ablagekorb, darüber schwebt der Abrechnungsbericht.</title>
+  <rect x="48" y="56" width="384" height="264" fill="#E2EDDC"/>
+
+  <!-- the sheet, about to be dropped -->
+  <g transform="rotate(-8 242 116)">
+    <polygon points="198,66 290,66 314,90 314,194 198,194" fill="#C8D9BF"/>
+    <polygon points="184,52 276,52 300,76 300,180 184,180" fill="#F6F3EA" stroke="#24292B" stroke-width="4" stroke-linejoin="miter"/>
+    <polygon points="276,52 276,76 300,76" fill="#E4DFD2" stroke="#24292B" stroke-width="4" stroke-linejoin="miter"/>
+    <g fill="#24292B">
+      <rect x="200" y="84" width="36" height="6"/><rect x="244" y="84" width="24" height="6"/>
+      <rect x="200" y="106" width="28" height="6"/><rect x="236" y="106" width="14" height="6"/><rect x="262" y="106" width="24" height="6"/>
+      <rect x="200" y="134" width="16" height="6"/><rect x="224" y="134" width="36" height="6"/><rect x="268" y="134" width="22" height="6"/>
+      <rect x="200" y="148" width="16" height="6"/><rect x="224" y="148" width="26" height="6"/><rect x="258" y="148" width="30" height="6"/>
+      <rect x="200" y="162" width="16" height="6"/><rect x="224" y="162" width="40" height="6"/><rect x="272" y="162" width="18" height="6"/>
+    </g>
+    <rect x="256" y="97" width="36" height="24" fill="none" stroke="#B0281F" stroke-width="4"/>
+  </g>
+
+  <!-- where it lands -->
+  <path d="M168 206H312" fill="none" stroke="#24292B" stroke-width="4" stroke-dasharray="8 8"/>
+
+  <!-- the letter tray -->
+  <polygon points="102,238 406,238 390,310 118,310" fill="#C8D9BF"/>
+  <polygon points="88,224 392,224 376,296 104,296" fill="#F6F3EA" stroke="#24292B" stroke-width="4" stroke-linejoin="miter"/>
+  <rect x="80" y="216" width="320" height="12" fill="#24292B"/>
+  <path d="M206 228A34 34 0 0 0 274 228Z" fill="#E4DFD2" stroke="#24292B" stroke-width="4"/>
+</svg>

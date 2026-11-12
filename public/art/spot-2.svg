@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="480" height="360" role="img">
+  <title>Soll und Ist sind gleich lang, der Abgleich ist mit 0,00 abgestempelt.</title>
+  <rect x="48" y="56" width="384" height="264" fill="#E2EDDC"/>
+
+  <!-- the check sheet -->
+  <rect x="78" y="94" width="240" height="216" fill="#C8D9BF"/>
+  <rect x="64" y="80" width="240" height="216" fill="#F6F3EA" stroke="#24292B" stroke-width="4"/>
+  <rect x="66" y="100" width="236" height="56" fill="#E2EDDC"/>
+  <g fill="#24292B">
+    <rect x="88" y="112" width="40" height="8"/><rect x="196" y="112" width="92" height="8"/>
+    <rect x="88" y="138" width="28" height="8"/><rect x="196" y="138" width="92" height="8"/>
+    <rect x="184" y="166" width="104" height="4"/>
+  </g>
+
+  <!-- the imprint: difference 0,00 -->
+  <g transform="rotate(-5 184 236)">
+    <rect x="112" y="198" width="144" height="76" fill="#F6F3EA" stroke="#2E6A3A" stroke-width="4"/>
+    <rect x="121" y="207" width="126" height="58" fill="none" stroke="#2E6A3A" stroke-width="4"/>
+    <rect x="142" y="221" width="20" height="30" rx="9" fill="none" stroke="#2E6A3A" stroke-width="4"/>
+    <polygon points="168,243 175,243 171,254 164,254" fill="#2E6A3A"/>
+    <rect x="179" y="221" width="20" height="30" rx="9" fill="none" stroke="#2E6A3A" stroke-width="4"/>
+    <rect x="205" y="221" width="20" height="30" rx="9" fill="none" stroke="#2E6A3A" stroke-width="4"/>
+  </g>
+
+  <!-- the rubber stamp, standing -->
+  <rect x="340" y="246" width="92" height="30" fill="#C8D9BF"/>
+  <rect x="359" y="172" width="26" height="60" fill="#F6F3EA" stroke="#24292B" stroke-width="4"/>
+  <circle cx="372" cy="150" r="26" fill="#24292B"/>
+  <rect x="326" y="232" width="92" height="30" fill="#24292B"/>
+  <rect x="352" y="241" width="40" height="12" fill="#F6F3EA"/>
+  <rect x="358" y="245" width="28" height="4" fill="#2E6A3A"/>
+  <rect x="332" y="262" width="80" height="10" fill="#2E6A3A"/>
+</svg>

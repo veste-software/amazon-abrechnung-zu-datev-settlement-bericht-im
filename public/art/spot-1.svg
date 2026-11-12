@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="480" height="360" role="img">
+  <title>Der Abrechnungsbericht kommt aus dem Berichte-Archiv, die Auszahlungssumme ist rot markiert.</title>
+  <rect x="48" y="56" width="384" height="264" fill="#E2EDDC"/>
+
+  <!-- shadows -->
+  <polygon points="166,108 342,108 342,278 302,318 166,318" fill="#C8D9BF"/>
+  <rect x="110" y="62" width="288" height="64" fill="#C8D9BF"/>
+
+  <!-- the report archive with its slot -->
+  <rect x="96" y="48" width="288" height="64" fill="#F6F3EA" stroke="#24292B" stroke-width="4"/>
+  <rect x="200" y="64" width="80" height="8" fill="#24292B"/>
+  <rect x="128" y="90" width="224" height="8" fill="#24292B"/>
+
+  <!-- motion of the sheet -->
+  <path d="M132 124V172M356 124V172" fill="none" stroke="#24292B" stroke-width="4" stroke-dasharray="10 8"/>
+
+  <!-- the settlement sheet, sliding out -->
+  <polygon points="152,94 328,94 328,264 288,304 152,304" fill="#F6F3EA" stroke="#24292B" stroke-width="4" stroke-linejoin="miter"/>
+  <polygon points="288,304 288,264 328,264" fill="#E4DFD2" stroke="#24292B" stroke-width="4" stroke-linejoin="miter"/>
+  <g fill="#24292B">
+    <rect x="172" y="118" width="40" height="8"/><rect x="220" y="118" width="32" height="8"/><rect x="260" y="118" width="48" height="8"/>
+    <rect x="172" y="144" width="52" height="6"/><rect x="232" y="144" width="24" height="6"/><rect x="268" y="144" width="44" height="6"/>
+    <rect x="172" y="178" width="20" height="6"/><rect x="200" y="178" width="44" height="6"/><rect x="252" y="178" width="16" height="6"/><rect x="276" y="178" width="36" height="6"/>
+    <rect x="172" y="200" width="20" height="6"/><rect x="200" y="200" width="32" height="6"/><rect x="240" y="200" width="52" height="6"/><rect x="300" y="200" width="16" height="6"/>
+    <rect x="172" y="222" width="20" height="6"/><rect x="200" y="222" width="44" height="6"/><rect x="252" y="222" width="28" height="6"/><rect x="288" y="222" width="28" height="6"/>
+    <rect x="172" y="244" width="20" height="6"/><rect x="200" y="244" width="32" height="6"/><rect x="240" y="244" width="40" height="6"/>
+    <rect x="172" y="266" width="20" height="6"/><rect x="200" y="266" width="40" height="6"/><rect x="248" y="266" width="24" height="6"/>
+  </g>
+  <rect x="260" y="134" width="60" height="26" fill="none" stroke="#B0281F" stroke-width="4"/>
+</svg>

@@ -1,80 +1,172 @@
-# DESIGN: Amazon-Abrechnung zu DATEV
+# DESIGN: Grünband (Amazon-Abrechnung zu DATEV)
 
-## The idea
+Brand kit by the studio Designer. This file is the direction; `src/styles/brand.css` is its code. Where `global.css` or an older rule disagrees, this file and `brand.css` win.
 
-The site is the cousin of a **green-barred continuous-form journal printout** (Tabellierpapier/Endlospapier, the kind an old DATEV Primanota came out on) that a bookkeeper has just checked and stamped **"abgestimmt"** in red or green ink. It borrows the discipline of a Swiss railway timetable for its structure: a strict column grid, hairline rules, tabular figures and one signal colour used only where something needs attention.
+## 1. The real-world cousin
 
-**Why not the pure timetable direction:** the studio's starting direction was the Swiss railway timetable. SPEC §12 names the ledger printout and the rubber stamp as this product's real-world cousin, and that object is what the audience (bookkeepers, tax firm staff) trusts. So the ledger sets the materials (paper, green bars, carbon ink, sprocket holes, stamp), and the timetable sets the rules (grid, hairlines, tabular numerals, one red).
+A **green-barred continuous-form journal printout** (Tabellierpapier, Endlospapier, the kind an old DATEV Primanota came out on), with sprocket holes down both edges, that a bookkeeper has checked, underlined twice in red pencil under the total and stamped **"abgestimmt"**. The structure follows a Swiss railway timetable: a strict column grid, hairline rules, tabular figures, one signal colour.
 
-## Typefaces (self-hosted, never a CDN)
+The product's story in one line: **a loose Amazon sheet goes in, a checked and stamped stack of green-bar paper comes out.** Every illustration tells part of that story.
 
-| Role | Face | Source | Use |
+## 2. Name and mark
+
+- **Name: Grünband.** The pale green bars of Tabellierpapier that made long columns of figures readable. Short, German, about the object the audience trusts, and it owns its colour. Descriptor, always next to it: "Amazon-Abrechnung → DATEV".
+- **The mark** (`public/brand/logo.svg`): one sheet of continuous paper seen from above, with a solid offset sheet under it (the stack, the "Durchschlag"), three sprocket holes in the left margin, two Journalgrün bars, and a red **double rule** at the bottom right. The double rule is the bookkeeper's sign that a total is closed and balanced. No text in the mark. `public/favicon.svg` is the same mark with two holes and one red bar for 16 px.
+- **Lock-up in the header:** mark at 32 px, then "Grünband" in Archivo 800 at `font-stretch: 118%`, 1.375rem, Kohle, then a hairline vertical rule and the descriptor in IBM Plex Mono 500, 0.8125rem, uppercase, tracked 0.08em, muted. Below 480 px the descriptor is hidden. The page `<title>` ends with "· Grünband", and the JSON-LD `name` is "Grünband – Amazon-Abrechnung zu DATEV".
+
+## 3. Palette (flat, nothing else)
+
+| Role | Name | Hex | Token | Use |
+|---|---|---|---|---|
+| Surface | **Papier** | `#F6F3EA` | `--paper` | The page. Never pure white. |
+| Second surface | **Grünband** | `#E2EDDC` | `--band` | Table bands, input fill, the drop zone, the illustration desk |
+| Ink | **Kohle** | `#24292B` | `--ink` | All text and rules (13.3:1 on Papier). Muted text `#565E5A` (6.0:1 on Papier, 5.5:1 on Grünband) |
+| Accent (sparingly) | **Journalgrün** | `#2E6A3A` | `--accent` | The **one primary button** per screen, the "Saldo stimmt" stamp, OK labels, the bars in the mark. Papier text on it: 5.8:1. Hover `#22502B` (8.4:1) |
+| Signal | **Stempelrot** | `#B0281F` | `--signal` | Differences, errors, "Achtung", the focus ring (the red pencil), the double rule in the mark. 6.0:1 on Papier. Dark `#8E1F18` |
+
+Tints for depth in illustrations and CSS only (never as text colours): **Lochrand** `#E4DFD2` (sprocket holes on Papier, shadow on paper, folded corners), **Bandschatten** `#C8D9BF` (shadow and holes on a Grünband surface).
+
+No blue, purple, indigo or pure black anywhere. **No gradients anywhere**: not in CSS, not in SVG, not in shadows. Repeating shapes (sprocket holes, bands) are drawn with flat SVG tiles (data URIs in `brand.css`) or `:nth-child` fills.
+
+## 4. Type
+
+| Role | Face | npm | Settings |
 |---|---|---|---|
-| Display and text | **Archivo** (variable, weights 400–800) | `@fontsource-variable/archivo` | Headings at 700–800 tight-tracked; body at 400; labels at 600 in small caps with letter-spacing 0.08em |
-| Figures and printout | **IBM Plex Mono** (400, 500, 600) | `@fontsource/ibm-plex-mono` | Every amount, account number, date, ID, the preview table, the check view, the stamp, the file name |
+| Display | **Archivo**, wide | `@fontsource-variable/archivo` (`wdth.css`, both axes) | 800, `font-stretch: 108%` (H1) / 700, 106% (H2, H3), brand name 800 at 118 %, tracking −0.015em. The wide cut reads like the heading of a printed DATEV form. |
+| Text | **Archivo**, normal width | same file | 400 body, 600 labels and buttons |
+| Figures | **IBM Plex Mono** | `@fontsource/ibm-plex-mono` (400, 500, 600) | Every amount, account, date, ID, file name, column head, section label. `font-variant-numeric: tabular-nums`; amounts right-aligned on the decimal comma. |
 
-Rule: a number is always in Plex Mono with `font-variant-numeric: tabular-nums`, and amounts are right-aligned so the decimal commas line up. Words are always Archivo.
+Rule: a number is always Plex Mono; a word is always Archivo.
 
-**Type scale** (custom properties in `src/styles/global.css`):
+**Scale** (tokens in `brand.css`):
 
 | Token | Size | Use |
 |---|---|---|
-| `--fs-xs` | 0.8125rem (13px) | Footnotes, column heads in tables (Plex Mono, uppercase, tracked) |
-| `--fs-sm` | 0.9375rem (15px) | Table cells, notices, form labels |
-| `--fs-base` | 1.0625rem (17px) | Body text, line-height 1.55, measure 66ch |
-| `--fs-lg` | 1.375rem (22px) | Lead paragraph, H3 |
-| `--fs-xl` | 2rem (32px) | H2 |
-| `--fs-2xl` | clamp(2.5rem, 6vw, 4.25rem) | H1 |
-| `--fs-figure` | clamp(3.5rem, 11vw, 7.5rem) | **The difference to the payout**, the largest thing on the tool screen (Plex Mono 600) |
+| `--fs-xs` | 0.8125rem / 13 px | Mono labels, column heads, section labels only (uppercase, tracked) |
+| `--fs-sm` | 1rem / 16 px | Table cells, notices, footnotes |
+| `--fs-base` | 1.125rem / 18 px | Body, line-height 1.55, measure 64ch |
+| `--fs-lg` | 1.375rem / 22 px | Lead sentence, H3, drop zone title |
+| `--fs-xl` | clamp(1.625rem → 2.25rem) | H2 |
+| `--fs-2xl` | clamp(2rem → 3.375rem) | H1 (about 32 px at 390, 54 px at 1280) |
+| `--fs-figure` | clamp(3.5rem → 7.5rem) | The difference to the payout, the largest thing on the tool screen |
 
-## Colours
+## 5. Grid and spacing
 
-| Name | Hex | For |
+- Unit `--u` = 8 px. Steps: `--s-1` 8, `--s-2` 16, `--s-3` 24, `--s-4` 32, `--s-6` 48, `--s-8` 64, `--s-12` 96. Nothing else.
+- Page: the **paper strip** `.paper` with sprocket margins (`--margin-strip` 1.75rem, 0.75rem under 760 px) left and right, inside a 12-column grid, gutter 1.5rem (1rem under 760 px), max width 76rem.
+- Text sits in columns 1–7 or 1–8 (64ch); marginalia (sources, account numbers) in 9–12, smaller and muted, like notes on a printout.
+- Sections are divided by a 2 px Kohle rule and a mono section label at the left ("01 DATEI", "02 PRÜFUNG", "03 EXPORT", "04 ABLAUF").
+- Under 760 px everything stacks in one column.
+
+## 6. Signature elements
+
+1. **The sprocket margin (Führungslochrand).** Both page edges carry punched holes (Lochrand circles, 10 px, every 32 px) and a dashed perforation hairline. Drawn with a flat SVG tile in `brand.css`. The drop zone carries the same margins in Bandschatten. Hidden in print.
+2. **Green bands of three rows.** Tables: `tbody tr:nth-child(6n+1/2/3)` get Grünband. The preview `<pre>`: class `.bands` (a flat SVG tile, three rows Grünband, three rows clear). Never zebra stripes per row.
+3. **The stamp.** Double-ruled rectangle, Plex Mono 600 uppercase, rotated −3°: Journalgrün "SALDO STIMMT", Stempelrot "DIFFERENZ 1,00 €". Once per screen, never decoration. The ink texture uses no blur.
+4. **The double rule.** A total that is checked gets a red double underline (`.sum-closed`: two 2 px Stempelrot rules, 2 px apart), like a pencil mark under a closed total. Used under the Amazon total in the check view and in the mark.
+5. **Durchschlag (the offset sheet).** The only depth in the product: a flat sheet offset 8 px down-right behind the drop zone and the check printout (`box-shadow: 8px 8px 0 0` in Bandschatten or Lochrand, **zero blur**). It reads as the next sheet in the stack. No other shadows.
+
+## 7. Illustration style
+
+- Hand-built SVG, flat fills from the palette and tints above, **one stroke width: 4 units, Kohle, square corners, miter joins**. Paper objects have radius 0; only the stamp knob, zeros and holes are round.
+- Depth: every object on the desk casts a flat offset copy of its own outline, 14 units down-right, in the shadow tint of the surface it lies on (Bandschatten on Grünband, Lochrand on Papier). Stacks are sheets offset by 12 units.
+- Figures and text in drawings are abstract bars (Kohle, 6 high) laid out in real columns: account, contra account, text, amount right-aligned. The only drawn characters are "0,00" and "1,00" on stamp imprints, built from shapes, so no font is needed.
+- Red appears only where something is being checked: the total cell circled on the Amazon sheet, the double rule, a difference.
+- Not allowed: people, hands, laptops, charts, isometric views, blobs, icon-pack icons, emoji, Amazon or DATEV logos.
+
+**Files**
+
+| File | Size | Shows |
 |---|---|---|
-| Tabellierpapier | `#F6F3EA` | Page surface (warm paper, never pure white) |
-| Grünband | `#E2EDDC` | The pale green bars behind every other table row band, input fields, the drop zone fill |
-| Kohle | `#24292B` | All text and hairline ink (carbon grey, never pure black). Muted text uses `--ink-muted: #565E5A` (6.2:1 on paper) |
-| Stempelrot | `#B0281F` | The single accent: "Differenz" stamp, errors, the primary download button, focus ring. 6.0:1 on paper |
-| Stempelgrün | `#2E6A3A` | Only the "Saldo stimmt / abgestimmt" stamp and success notes. 6.1:1 on paper |
+| `public/brand/logo.svg` | 64×64 | The mark (section 2) |
+| `public/favicon.svg` | 32×32 | The mark simplified for 16 px |
+| `public/art/hero.svg` | 1200×720 | The whole story on a green desk: the loose Amazon sheet (tilted, folded corner, raw tab data, total cell circled red) feeds a strip of green-bar continuous paper; a rubber stamp hovers over the strip and has left a green "0,00" imprint; the strip runs into a neat stack of sheets whose top sheet ends in the red double rule. |
+| `public/art/spot-1.svg` | 480×360 | Step 1 "Bericht holen": the settlement sheet sliding out of a report slot, total cell circled red |
+| `public/art/spot-2.svg` | 480×360 | Step 2 "Abgleich prüfen": Soll/Ist rows of equal length on a sheet, the green "0,00" imprint, the stamp standing beside it |
+| `public/art/spot-3.svg` | 480×360 | Step 3 "Stapel einlesen": the zig-zag folded continuous stack (Leporello) with green bands, the red double rule on top |
+| `public/art/spot-empty.svg` | 480×360 | Empty state of the drop zone: an empty letter tray (Ablagekorb) with a sheet hovering above it and its dashed landing outline |
+| `public/art/spot-difference.svg` | 480×360 | Difference state: a sheet with one row circled in red and a red "1,00" imprint |
+| `public/art/pattern.svg` | 32×32 tile | The sprocket margin: one hole and a perforation dash, for borders and the print-free page strip |
 
-Hairline rules are `1px solid` Kohle at 35 % opacity (`--rule`), heavy rules are `2px solid` Kohle (`--rule-heavy`), used as top/bottom rules of tables and sections, never as a coloured side border.
+## 8. The first screen
 
-## Grid and spacing
+Goal in five seconds: **what** (Amazon-Abrechnung → DATEV), **for whom** (sellers and their tax firm), **what to do** (drop the file). The working tool is fully visible without scrolling at 1280×800 and at 390×844.
 
-- Spacing unit `--u: 0.5rem` (8px). Allowed steps: 1, 2, 3, 4, 6, 8, 12, 16 units. Nothing else.
-- Page = a **paper strip** with two **sprocket margins** (`--margin-strip: 1.75rem`) on left and right, inside them a 12-column grid with `1.5rem` gutters, max width 76rem.
-- Text blocks sit on columns 1–8 (66ch measure); side notes, account numbers and "Quelle" lines sit in columns 9–12, set smaller, like marginalia on a printout. Below 760px everything stacks in one column and the sprocket strips shrink to 0.75rem.
-- Sections are separated by a full-width heavy rule plus a small Plex Mono section label at the left ("01 DATEI", "02 PRÜFUNG", "03 EXPORT") the way a printout has form-feed headers. Rhythm changes per section: the tool is dense, content pages are airy.
+**Words**
 
-## Signature elements
+- Eyebrow (mono, xs, muted): `FLAT FILE V2 → DATEV EXTF · IM BROWSER`
+- H1: **Amazon-Abrechnung in DATEV-Buchungen umwandeln** (`text-wrap: balance`)
+- Lead (one sentence, `--fs-lg`): "Legen Sie den Abrechnungsbericht ab: Sie sehen sofort, ob die Zeilen zur Auszahlung passen, und erhalten einen geprüften Buchungsstapel für DATEV."
+- Drop zone title: **Abrechnungsbericht hier ablegen**; mono line: `Flat File V2 · .txt · EUR · mehrere Dateien möglich`
+- Primary button (Journalgrün, the only one on the screen): **Abrechnung auswählen**
+- Under the drop zone, one line, two parts: left "Die Datei bleibt in Ihrem Browser. Es wird nichts hochgeladen." Right, mono: `Prüfung und Vorschau kostenlos · Export ab 9 € im Monat` (link to /preise/).
 
-1. **Sprocket margin (Führungslochrand).** Both page edges carry a vertical strip of punched holes, built in CSS only: a `::before`/`::after` on `.paper` with `background-image: radial-gradient(circle, var(--hole) 0 0.3rem, transparent 0.32rem)` repeated every `1.27rem` (half-inch pitch scaled), plus a dashed hairline (`border-inline: 1px dashed`) for the perforation where the strip would tear off. The hole colour is a slightly darker paper tone `#E4DFD2`. Hidden in print.
-2. **Green-bar banding.** Tables and the booking preview use `background-image: repeating-linear-gradient(to bottom, var(--band) 0 calc(3 * var(--row)), transparent calc(3 * var(--row)) calc(6 * var(--row)))`: bands of three rows, exactly like Tabellierpapier, not zebra stripes per row.
-3. **The stamp.** A hand-built inline SVG component (`src/components/Stamp.astro` for static use and `Stamp.tsx` for the island): double-ruled rectangle with slightly uneven corners, the word in Plex Mono 600 uppercase, letter-spaced, rotated −3°, with an SVG `feTurbulence` + `feDisplacementMap` filter for uneven ink. Two states: green "SALDO STIMMT" / "ABGESTIMMT" and red "DIFFERENZ 1,00 €". It appears once per screen, never as decoration elsewhere.
-4. **The big difference figure.** In the check view, the difference (`0,00 €` or `1,00 €`) is set at `--fs-figure` in Plex Mono, with the Amazon total and the line sum in a small two-row "Soll/Ist" table beside it.
+**1280×800**
 
-## Components
+```
+| [mark] Grünband | AMAZON-ABRECHNUNG → DATEV        Konverter Umstieg Kontierung Für Kanzleien Preise |  ~76px, 2px rule
+| cols 1–7: eyebrow / H1 (3 lines, 54px) / lead (3 lines) | cols 8–12: hero.svg (≈490×294)  |  ~320px
+| 01 DATEI                                                                                       |
+| ┌ drop zone, full width, sprocket margins, Durchschlag ──────────────────────────────────┐   |
+| │ [spot-empty 168px] │ Abrechnungsbericht hier ablegen / mono line │ [Abrechnung auswählen] │   |  ~176px
+| └──────────────────────────────────────────────────────────────────────────────────────┘   |
+| privacy sentence                                        Prüfung kostenlos · Export ab 9 €   |  bottom ≈ 690px
+```
 
-- **Buttons:** rectangular, `border-radius: 0`, `2px solid Kohle`, Archivo 600, small caps label. Primary (download) = Stempelrot fill with paper text; secondary = paper fill, Kohle text. Hover: fill shifts to Kohle (secondary) or darker red `#8E1F18` (primary); no movement, no shadow. Disabled: dashed border, muted ink, and a one-line reason under it ("Erst Kontenzuordnung bestätigen").
-- **Inputs:** look like a field on a printed form: Grünband fill, no box, only a `2px` Kohle bottom rule, label above in small caps 600, value in Plex Mono when numeric (Beraternummer, Konto). Error: the bottom rule turns Stempelrot and the message sits under it in Stempelrot, prefixed "Fehler:".
-- **Drop zone:** a torn-off sheet: dashed 2px Kohle border, Grünband fill, a Plex Mono line "Abrechnung (Flat File V2, .txt) hier ablegen" and a plain secondary button "Datei wählen". The privacy sentence sits directly under it.
-- **Results:** the check view is a printout block: heavy rule, header line in Plex Mono (`ABRECHNUNG 12345678901 · 03.10.2026–17.10.2026 · AUSZAHLUNG 20.10.2026`), the big difference figure with the stamp, then banded tables.
-- **Notices:** no boxes with coloured side bars. A notice is a paragraph with a small caps label in front ("HINWEIS", "ACHTUNG" in Stempelrot, "OK" in Stempelgrün) and a hairline above and below.
-- **Focus and selection:** `outline: 3px solid Stempelrot; outline-offset: 2px` everywhere; `::selection` is Grünband on Kohle.
-- **Favicon:** an SVG of a small red stamp square with "A→D" in mono.
-- **404:** a printout with "Seite 404 von 9" and a line "Diese Seite ist nicht im Stapel."
-- **Print stylesheet:** the check view prints cleanly on A4 (no sprocket strips, no buttons), because bookkeepers will print it for the file.
+**390×844**
 
-## Voice
+```
+| [mark] Grünband                    |  brand row ~56px
+| Konverter Umstieg Kontierung       |  nav wraps to 2 rows, 16px, ~56px, 2px rule
+| Für Kanzleien Preise               |
+| eyebrow                            |
+| H1, 32px, 3 lines                  |  ~110px
+| lead, 4 lines                      |  ~110px
+| 01 DATEI                           |
+| drop zone: title / mono line /     |
+| [ Abrechnung auswählen ] full width|  ~200px, spot hidden
+| privacy sentence, price line       |  bottom ≈ 700px
+```
 
-German, formal "Sie", the tone of a careful colleague in a tax firm: short sentences, concrete nouns, accounting terms used correctly (Verrechnungskonto, Gegenkonto, BU-Schlüssel, Belegfeld 1, OP-Ausgleich). Say what happens to the data and what the user must check. No exclamation marks, no promises about saving time, no "einfach", "nahtlos", "mühelos". Errors name the row and the value: "Zeile 14: Datum »2026/10/03« nicht erkannt."
+The hero illustration is hidden in the intro under 760 px and appears instead at the top of the "So arbeitet der Konverter" section (class `.art-mobile`), full width.
 
-## What we will not do
+**Drop zone states** (all designed, same box):
 
-- No coloured side-border cards or callouts, no rounded corners beyond 2px, no pill buttons, no shadows except none.
-- No gradients other than the sprocket holes and the green bands described above; no purple, indigo or blue anywhere.
-- No hero with two buttons over three icon cards; the tool itself is the top of the start page.
-- No emoji, no icon packs, no stock photos, no illustrations of people, no Amazon or DATEV logos.
-- No Tailwind or UI kit; one stylesheet of tokens plus scoped component styles.
+- **Empty:** Grünband fill, 2 px Kohle border, sprocket margins, Durchschlag, spot-empty at left (desktop only).
+- **Drag over:** fill Papier, border 2 px **dashed** Journalgrün, title changes to "Loslassen, um zu prüfen".
+- **Working:** title "Datei wird gelesen …", mono line shows the file name; the button is disabled. No spinner.
+- **Done:** the zone shrinks to one bar: mono file name + row count, and a secondary button "Andere Datei wählen". The check printout below takes over.
+- **Error:** border Stempelrot, label "FEHLER" in Stempelrot, the message names row and value, and the button stays active.
+
+**Below the tool, in this order:** "So arbeitet der Konverter" as three steps in a row (spot-1, spot-2, spot-3, 160 px tall, each with a mono number, a 3-word H3 and one sentence, separated by hairlines, no boxes), then the banded table of what goes into the batch, then the FAQ, then the further reading links.
+
+## 9. Components (implemented in brand.css)
+
+- **Buttons:** square, 2 px border, min-height 48 px, Archivo 600, 1.0625rem. `.btn` = Papier with Kohle text, hover Grünband. `.btn-primary` = Journalgrün with Papier text, hover `#22502B`. Disabled = dashed border, muted text, and a one-line reason under it. No movement, no shadow on hover.
+- **Fields:** label above (Archivo 600, 0.9375rem), input with Grünband fill, no box, a 2 px Kohle bottom rule, min-height 48 px, Plex Mono for numbers. Error: Stempelrot rule and a message under it starting "Fehler:".
+- **Select:** native select with `appearance: none` and a flat Kohle chevron (SVG tile).
+- **Checkbox:** 22 px square, 2 px Kohle border, checked = Journalgrün with a Papier tick (SVG tile).
+- **Notices:** a paragraph between two hairlines with a label in front: "HINWEIS" (Kohle), "ACHTUNG" (Stempelrot), "OK" (Journalgrün). Never a coloured side border.
+- **FAQ:** `<details>` with a hairline above, the summary in Archivo 600 with a drawn plus/minus at the right.
+- **Focus:** `outline: 3px solid` Stempelrot, offset 3 px, everywhere. **Selection:** Grünband on Kohle.
+- **Motion:** only the 150 ms stamp press; nothing under `prefers-reduced-motion`.
+
+## 10. Voice
+
+German, formal "Sie", a careful colleague in a tax firm. Short sentences, concrete nouns, accounting terms used correctly (Verrechnungskonto, Gegenkonto, BU-Schlüssel, Belegfeld 1, OP-Ausgleich). Say what happens to the data and what the user must check. No exclamation marks, no "einfach", "nahtlos", "mühelos", no promises about saved time.
+
+1. "Abrechnungsbericht hier ablegen"
+2. "Saldo stimmt. Die Summe der 214 Zeilen entspricht der Auszahlung."
+3. "Zeile 14: Datum »2026/10/03« nicht erkannt. Erwartet wird 03.10.2026 oder 2026-10-03."
+4. "Differenz 1,00 €. Der Export bleibt gesperrt, bis Sie die Differenz einem Konto zuordnen."
+5. "Die Datei bleibt in Ihrem Browser. Es wird nichts hochgeladen."
+
+## 11. What we will not do
+
+- No gradients of any kind, no blurred shadows, no glass, no glow.
+- No rounded cards, no pill buttons, no radius above 2 px except round things (holes, stamp knob).
+- No coloured side borders on notices or cards.
+- No hero with two buttons over three icon cards; the tool is on the first screen.
+- No emoji, icon packs, stock photos, people, Amazon or DATEV logos.
 - No ratings, testimonials, customer counts, "trusted by" rows or countdowns.
-- No motion except one 150ms stamp "press" (scale 1.04 → 1, opacity 0 → 1) when the check finishes, and none at all under `prefers-reduced-motion`.
+- No Tailwind or UI kit: `brand.css` for tokens and base, scoped styles for components.

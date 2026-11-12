@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="480" height="360" role="img">
+  <title>Eine Zeile ist rot eingekreist, der Abgleich zeigt eine Differenz von 1,00.</title>
+  <rect x="48" y="56" width="384" height="264" fill="#E2EDDC"/>
+
+  <!-- the check sheet -->
+  <rect x="102" y="78" width="240" height="232" fill="#C8D9BF"/>
+  <rect x="88" y="64" width="240" height="232" fill="#F6F3EA" stroke="#24292B" stroke-width="4"/>
+  <rect x="90" y="100" width="236" height="48" fill="#E2EDDC"/>
+  <rect x="90" y="196" width="236" height="48" fill="#E2EDDC"/>
+  <g fill="#24292B">
+    <rect x="108" y="78" width="64" height="8"/>
+    <rect x="90" y="92" width="236" height="4"/>
+    <rect x="108" y="105" width="24" height="6"/><rect x="140" y="105" width="24" height="6"/><rect x="268" y="105" width="40" height="6"/>
+    <rect x="108" y="121" width="24" height="6"/><rect x="140" y="121" width="24" height="6"/><rect x="280" y="121" width="28" height="6"/>
+    <rect x="108" y="137" width="24" height="6"/><rect x="140" y="137" width="24" height="6"/><rect x="256" y="137" width="52" height="6"/>
+    <rect x="108" y="153" width="24" height="6"/><rect x="140" y="153" width="24" height="6"/><rect x="272" y="153" width="36" height="6"/>
+    <rect x="108" y="169" width="24" height="6"/><rect x="140" y="169" width="24" height="6"/><rect x="264" y="169" width="44" height="6"/>
+    <rect x="108" y="185" width="24" height="6"/><rect x="140" y="185" width="24" height="6"/><rect x="284" y="185" width="24" height="6"/>
+    <rect x="108" y="201" width="24" height="6"/><rect x="140" y="201" width="24" height="6"/><rect x="260" y="201" width="48" height="6"/>
+    <rect x="108" y="217" width="24" height="6"/><rect x="140" y="217" width="24" height="6"/><rect x="276" y="217" width="32" height="6"/>
+    <rect x="108" y="233" width="24" height="6"/><rect x="140" y="233" width="24" height="6"/><rect x="268" y="233" width="40" height="6"/>
+  </g>
+  <rect x="100" y="160" width="216" height="24" fill="none" stroke="#B0281F" stroke-width="4"/>
+
+  <!-- the imprint: difference 1,00 -->
+  <g transform="rotate(6 336 252)">
+    <rect x="256" y="212" width="160" height="80" fill="#F6F3EA" stroke="#B0281F" stroke-width="4"/>
+    <rect x="265" y="221" width="142" height="62" fill="none" stroke="#B0281F" stroke-width="4"/>
+    <rect x="306" y="237" width="4" height="30" fill="#B0281F"/>
+    <polygon points="306,237 297,244 299.5,247 306,241.5" fill="#B0281F"/>
+    <polygon points="321,259 328,259 324,270 317,270" fill="#B0281F"/>
+    <rect x="332" y="237" width="20" height="30" rx="9" fill="none" stroke="#B0281F" stroke-width="4"/>
+    <rect x="358" y="237" width="20" height="30" rx="9" fill="none" stroke="#B0281F" stroke-width="4"/>
+  </g>
+</svg>
