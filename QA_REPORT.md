@@ -65,3 +65,12 @@ ly equal [ '', 'agb/', …(7) ][39m
     [90m 49|[39m   it('AC20/21: footer links Impressum and Datenschutz and carries the …
 
 [31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m [repo]
+
+## Round 3: blockers
+
+- (high) Legal pages: the impressum page does not show "HRB 4400" (the company text was changed or not used). Show src/content/legal/impressum.<lang>.html and datenschutz.<lang>.html unchanged on /impressum and /datenschutz (see src/content/legal/LEGAL.md). [impressum/index.html]
+- (high) Legal pages: the impressum page does not show "DE257240427" (the company text was changed or not used). Show src/content/legal/impressum.<lang>.html and datenschutz.<lang>.html unchanged on /impressum and /datenschutz (see src/content/legal/LEGAL.md). [impressum/index.html]
+- (high) Legal pages: the impressum page does not show "A7-24 Aumann GmbH" (the company text was changed or not used). Show src/content/legal/impressum.<lang>.html and datenschutz.<lang>.html unchanged on /impressum and /datenschutz (see src/content/legal/LEGAL.md). [impressum/index.html]
+- (high) Legal pages: the impressum page still holds placeholder or draft wording. Show src/content/legal/impressum.<lang>.html and datenschutz.<lang>.html unchanged on /impressum and /datenschutz (see src/content/legal/LEGAL.md). [impressum/index.html]
+- (high) Legal pages: the datenschutz page does not show "A7-24 Aumann GmbH" (the company text was changed or not used). Show src/content/legal/impressum.<lang>.html and datenschutz.<lang>.html unchanged on /impressum and /datenschutz (see src/content/legal/LEGAL.md). [datenschutz/index.html]
+- (high) Legal pages: the datenschutz page does not show "post@a7-24.de" (the company text was changed or not used). Show src/content/legal/impressum.<lang>.html and datenschutz.<lang>.html unchanged on /impressum and /datenschutz (see src/content/legal/LEGAL.md). [datenschutz/index.html]
