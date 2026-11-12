@@ -1,6 +1,6 @@
 # Amazon-Abrechnung zu DATEV: Settlement-Bericht im Browser in einen DATEV-Buchungsstapel umwandeln
 
-**Stage:** seo · **Platform:** web · **Score:** 3/5 · **Spend:** $5.74
+**Stage:** qa · **Platform:** web · **Score:** 3/5 · **Spend:** $5.94
 
 For German Amazon sellers whose tax advisor books in DATEV and who rely on DATEV's Zahlungsdatenservice für Amazon (end 2027-08-15, known data gaps): upload the Amazon settlement report and download a checked DATEV EXTF booking batch (sales, fees, refunds, payout reconciliation) without granting API access. If it takes off it becomes the settlement-to-DATEV converter for every marketplace (eBay, Kaufland, Etsy) that tax advisors recommend to their clients.
 
@@ -23,6 +23,14 @@ For German Amazon sellers whose tax advisor books in DATEV and who rely on DATEV
 - [ ] [task 13] Optionally enable Cloudflare Web Analytics and set PUBLIC_CF_BEACON_TOKEN
 - [ ] [task 14] Fill in the Impressum details and have a lawyer review Impressum, Datenschutz and AGB, including the StBerG wording
 - [ ] [task 15] Submit the sitemap in Google Search Console
+- [ ] [task 16] Run npm run build and npm test (not run in this session) and fix anything they report, including whether sitemap-index.xml is the generated sitemap file name
+- [ ] [task 17] Set SITE_URL to the production domain in the Cloudflare Pages build settings
+- [ ] [task 18] Submit the sitemap in Google Search Console and Bing Webmaster Tools (Bing also gives IndexNow)
+- [ ] [task 19] Set PUBLIC_CF_BEACON_TOKEN for cookie-free Cloudflare Web Analytics
+- [ ] [task 20] Verify the Seller Central menu path for the V2 report and update the Flat File V2 page
+- [ ] [task 21] Have a tax firm test-import one generated EXTF file; add that to the pages only with their permission
+- [ ] [task 22] Post one disclosed, factual reply in the Seller Central forum thread and list the tool on AlternativeTo, after checking each site's rules
+- [ ] [task 23] Have a lawyer review the legal pages (Impressum, Datenschutz, AGB)
 
 ## Recommendation
 
@@ -76,3 +84,4 @@ subscription (Händler 9 EUR/month or 89 EUR/year (1 Mandantennummer); Kanzlei 2
 - 2026-11-12 21:38 · planned · scaffold and plan written
 - 2026-11-12 21:56 · building · build started
 - 2026-11-12 21:56 · seo · all planned tasks done
+- 2026-11-12 22:02 · qa · seo and conversion foundations written
