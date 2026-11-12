@@ -1,0 +1,10 @@
+---
+import Base from '../layouts/Base.astro';
+import { withBase } from '../lib/url';
+---
+
+<Base title="Seite nicht gefunden – Abrechnung → DATEV" description="Diese Seite gibt es nicht." noindex>
+  <p class="section-label num">Seite 404 von 9</p>
+  <h1>Diese Seite ist nicht im Stapel.</h1>
+  <p>Vielleicht wurde sie umbenannt. Der Konverter liegt auf der <a href={withBase('/')}>Startseite</a>.</p>
+</Base>

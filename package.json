@@ -1,0 +1,32 @@
+{
+  "name": "amazon-abrechnung-zu-datev",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "astro check && astro build",
+    "build:preview": "SITE_URL=https://example.github.io SITE_BASE=/preview astro build",
+    "test": "vitest run",
+    "lint": "astro check",
+    "design-check": "node scripts/design-check.mjs",
+    "size": "node scripts/size.mjs",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@astrojs/preact": "^6.1.5",
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/archivo": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "astro": "^7.4.11",
+    "fflate": "^0.8.3",
+    "preact": "^11.2.0",
+    "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "vitest": "^5.1.0"
+  }
+}

@@ -1,0 +1,132 @@
+---
+import '@fontsource-variable/archivo';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '@fontsource/ibm-plex-mono/600.css';
+import '../styles/global.css';
+import { withBase } from '../lib/url';
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+}
+
+const { title, description, noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+// Cloudflare Web Analytics is cookie-free; it only loads when the token is set at build time.
+const beaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
+
+const nav = [
+  { href: '/', label: 'Konverter' },
+  { href: '/datev-zahlungsdatenservice-amazon-alternative/', label: 'Umstieg' },
+  { href: '/amazon-gebuehren-buchen-datev/', label: 'Kontierung' },
+  { href: '/steuerkanzlei/', label: 'Für Kanzleien' },
+  { href: '/preise/', label: 'Preise' },
+];
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
+    <meta name="theme-color" content="#f6f3ea" />
+    {beaconToken && (
+      <script
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={JSON.stringify({ token: beaconToken })}
+      ></script>
+    )}
+  </head>
+  <body>
+    <div class="paper">
+      <div class="wrap">
+        <header class="site-head">
+          <a class="brand" href={withBase('/')}>
+            <span class="num">Abrechnung&nbsp;→&nbsp;DATEV</span>
+          </a>
+          <nav class="site-nav" aria-label="Hauptnavigation">
+            <ul>
+              {nav.map((item) => (
+                <li>
+                  <a href={withBase(item.href)}>{item.label}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </header>
+
+        <main id="inhalt">
+          <slot />
+        </main>
+
+        <footer class="site-foot">
+          <p class="disclaimer">
+            Nicht mit Amazon oder DATEV verbunden. Amazon und DATEV sind Marken ihrer jeweiligen Inhaber.
+          </p>
+          <ul class="legal">
+            <li><a href={withBase('/impressum/')}>Impressum</a></li>
+            <li><a href={withBase('/datenschutz/')}>Datenschutz</a></li>
+            <li><a href={withBase('/agb/')}>AGB</a></li>
+          </ul>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style>
+  .site-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: calc(2 * var(--u));
+    padding: calc(3 * var(--u)) 0 calc(2 * var(--u));
+    border-bottom: var(--rule-heavy);
+  }
+  .brand {
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .site-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(1 * var(--u)) calc(3 * var(--u));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: var(--fs-sm);
+  }
+  main {
+    padding: calc(4 * var(--u)) 0 calc(8 * var(--u));
+  }
+  .site-foot {
+    border-top: var(--rule-heavy);
+    padding: calc(2 * var(--u)) 0 calc(6 * var(--u));
+    font-size: var(--fs-xs);
+    color: var(--ink-muted);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: calc(2 * var(--u));
+  }
+  .site-foot p {
+    margin: 0;
+  }
+  .legal {
+    display: flex;
+    gap: calc(3 * var(--u));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+</style>

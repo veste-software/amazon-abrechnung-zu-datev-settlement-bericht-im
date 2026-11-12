@@ -55,6 +55,11 @@ subscription (Händler 9 EUR/month or 89 EUR/year (1 Mandantennummer); Kanzlei 2
 - DATEV announces a drop-in successor for marketplace settlements at 10 EUR a month or less: review within 2 weeks, re-price or park
 - Any confirmed wrong booking that the reconciliation check missed: disable checkout until fixed
 
+## Links
+
+- Repo: https://github.com/veste-software/amazon-abrechnung-zu-datev-settlement-bericht-im
+- Preview (GitHub Pages, builds from main): https://veste-software.github.io/amazon-abrechnung-zu-datev-settlement-bericht-im/
+
 ## History
 
 - 2026-11-12 21:14 · scouted · ranked first in the daily pool (aggregate 3.65 of 5 by 3 independent rankers); the studio builds the day's best candidate whatever its score, and the prototype is how it is judged
