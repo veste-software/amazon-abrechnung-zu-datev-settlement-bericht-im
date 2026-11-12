@@ -82,6 +82,8 @@ export default function Converter() {
   const [importError, setImportError] = useState('');
   const [previewOnly, setPreviewOnly] = useState(false);
   const [ackTick, setAckTick] = useState(0);
+  const [busy, setBusy] = useState('');
+  const dzState = drag ? 'over' : busy ? 'working' : files.length === 0 ? 'empty' : files.some((f) => !f.ok) ? 'error' : 'done';
 
   useEffect(() => {
     const stored = loadProfile(localStorage);
@@ -130,12 +132,14 @@ export default function Converter() {
   async function load(list: FileList | null) {
     if (!list || !list.length) return;
     const out: Loaded[] = [];
+    setBusy(Array.from(list).map((f) => f.name).join(', '));
     for (const f of Array.from(list)) {
       const text = decodeSettlement(new Uint8Array(await f.arrayBuffer()));
       const r = parseSettlement(text);
       out.push(r.ok ? { name: f.name, ok: true, settlement: r.settlement } : { name: f.name, ok: false, error: r.error });
     }
     setFiles(out);
+    setBusy('');
     setOverride(false);
     track('file_parsed');
   }
@@ -153,6 +157,7 @@ export default function Converter() {
       <p class="section-label">01 Datei</p>
       <div
         class={`dropzone${drag ? ' is-over' : ''}`}
+        data-state={dzState}
         onDragOver={(e) => {
           e.preventDefault();
           setDrag(true);
@@ -164,9 +169,30 @@ export default function Converter() {
           void load(e.dataTransfer?.files ?? null);
         }}
       >
-        <p class="num">Abrechnung (Flat File V2, .txt) hier ablegen</p>
-        <button type="button" class="btn" onClick={() => input.current?.click()}>
-          Datei wählen
+        {dzState === 'empty' || dzState === 'over' || dzState === 'working' || dzState === 'error' ? (
+          <img class="dropzone-art" src={withBase('/art/spot-empty.svg')} alt="" width="480" height="360" />
+        ) : null}
+        <div>
+          {dzState === 'error' && <p class="label">Fehler</p>}
+          <p class="dropzone-title">
+            {dzState === 'over'
+              ? 'Loslassen, um zu prüfen'
+              : dzState === 'working'
+                ? 'Datei wird gelesen'
+                : dzState === 'done'
+                  ? 'Abrechnung gelesen'
+                  : 'Abrechnungsbericht hier ablegen'}
+          </p>
+          <p class="dropzone-meta">
+            {dzState === 'working' || dzState === 'done'
+              ? busy || files.map((f) => f.name).join(', ')
+              : dzState === 'error'
+                ? 'Die Datei konnte nicht gelesen werden. Die Meldung steht unten.'
+                : 'Flat File V2 · .txt · EUR · mehrere Dateien möglich'}
+          </p>
+        </div>
+        <button type="button" class={dzState === 'done' ? 'btn' : 'btn btn-primary'} disabled={dzState === 'working'} onClick={() => input.current?.click()}>
+          {dzState === 'done' ? 'Andere Datei wählen' : 'Abrechnung auswählen'}
         </button>
         <input
           ref={input}
@@ -179,11 +205,14 @@ export default function Converter() {
           onChange={(e) => void load((e.currentTarget as HTMLInputElement).files)}
         />
       </div>
-      <p class="notice">
-        <span class="label">Hinweis</span>Die Datei wird ausschließlich in Ihrem Browser verarbeitet und nicht hochgeladen.
-      </p>
+      <div class="tool-foot">
+        <p>Die Datei bleibt in Ihrem Browser. Es wird nichts hochgeladen.</p>
+        <p class="num">
+          <a href={withBase('/preise/')}>Prüfung und Vorschau kostenlos · Export ab 9 € im Monat</a>
+        </p>
+      </div>
 
-      <details class="settings" open>
+      <details class="settings">
         <summary>Einstellungen und Konten</summary>
         <p class="notice notice-warn">
           <span class="label">Achtung</span>Die vorbelegten Kontonummern sind Platzhalter zum Ausprobieren, keine Buchungsempfehlung. Stimmen Sie die
@@ -394,6 +423,7 @@ function Result({ name, settlement, profile, mandant, override, setOverride, map
           </p>
         </div>
         <div class="stamp-wrap">
+          {!c.balanced && <img class="verdict-art" src={withBase('/art/spot-difference.svg')} alt="" width="480" height="360" />}
           <Stamp state={c.balanced ? 'ok' : 'diff'} amount={`${formatCents(diffAbs)} €`} id={`stamp-${settlement.settlementId}`} />
         </div>
       </div>

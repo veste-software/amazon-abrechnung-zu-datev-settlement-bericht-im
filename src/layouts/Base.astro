@@ -1,8 +1,5 @@
 ---
-import '@fontsource-variable/archivo';
-import '@fontsource/ibm-plex-mono/400.css';
-import '@fontsource/ibm-plex-mono/500.css';
-import '@fontsource/ibm-plex-mono/600.css';
+import '../styles/brand.css';
 import '../styles/global.css';
 import { withBase } from '../lib/url';
 
@@ -33,7 +30,7 @@ const nav = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
+    <title>{title.endsWith("· Grünband") ? title : `${title} · Grünband`}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {noindex && <meta name="robots" content="noindex" />}
@@ -63,7 +60,9 @@ const nav = [
       <div class="wrap">
         <header class="site-head">
           <a class="brand" href={withBase('/')}>
-            <span class="num">Abrechnung&nbsp;→&nbsp;DATEV</span>
+            <img class="brand-mark" src={withBase('/brand/logo.svg')} alt="" width="32" height="32" />
+            <span class="brand-name">Grünband</span>
+            <span class="brand-desc">Amazon-Abrechnung → DATEV</span>
           </a>
           <nav class="site-nav" aria-label="Hauptnavigation">
             <ul>
@@ -99,16 +98,11 @@ const nav = [
   .site-head {
     display: flex;
     flex-wrap: wrap;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
     gap: calc(2 * var(--u));
     padding: calc(3 * var(--u)) 0 calc(2 * var(--u));
     border-bottom: var(--rule-heavy);
-  }
-  .brand {
-    font-weight: 600;
-    text-decoration: none;
-    letter-spacing: 0.02em;
   }
   .site-nav ul {
     display: flex;

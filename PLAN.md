@@ -6,7 +6,7 @@ The first eight tasks give a thin but working tool end to end on the preview: dr
 
 ## Brand kit (Designer)
 
-- [ ] Use the brand kit: import src/styles/brand.css everywhere, put the logo in the header, build the first screen as described in DESIGN.md with the working tool visible at once, place the hero and spot illustrations
+- [x] Use the brand kit: import src/styles/brand.css everywhere, put the logo in the header, build the first screen as described in DESIGN.md with the working tool visible at once, place the hero and spot illustrations
   - Import `../styles/brand.css` in `Base.astro` (it imports the fonts itself, including Archivo's width axis, so drop the four font imports there). Delete from `global.css` everything `brand.css` now defines (tokens, `.paper`, `.ledger`, buttons, fields, `.dropzone`, notices, stamp), above all the `radial-gradient` and both `repeating-linear-gradient`s; the preview `<pre>` gets class `bands`. `npm run design-check` must report nothing.
   - Header: `<a class="brand">` with `<img class="brand-mark" src={withBase('/brand/logo.svg')} alt="">`, `<span class="brand-name">Grünband</span>`, `<span class="brand-desc">Amazon-Abrechnung → DATEV</span>`. Titles end with "· Grünband"; JSON-LD name "Grünband – Amazon-Abrechnung zu DATEV".
   - `/`: `.intro` (eyebrow, H1 "Amazon-Abrechnung in DATEV-Buchungen umwandeln", lead) beside `.intro-art` with `art/hero.svg`; then the island. In the island the drop zone gets the markup from DESIGN.md §8 (`spot-empty.svg` as `.dropzone-art`, `.dropzone-title`, `.dropzone-meta`, one `btn btn-primary` "Abrechnung auswählen", `data-state` over/working/done/error), followed by `.tool-foot` (privacy sentence + price line). Start the settings `<details>` closed so the first screen stays calm.
@@ -72,4 +72,4 @@ The first eight tasks give a thin but working tool end to end on the preview: dr
 
 ## QA round 1
 
-- [ ] [QA round 1] design-check fails (any-gradient, score 3): .paper::before/::after draw the sprocket holes with radial-gradient. Replace with flat shapes (e.g. an inline SVG circle tile repeated with repeat-y, or re… (src/styles/global.css:141)
+- [x] [QA round 1] design-check fails (any-gradient, score 3): .paper::before/::after draw the sprocket holes with radial-gradient. Replace with flat shapes (e.g. an inline SVG circle tile repeated with repeat-y, or re… (src/styles/global.css:141)

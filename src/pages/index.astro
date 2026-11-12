@@ -10,7 +10,7 @@ import { withBase } from '../lib/url';
   jsonLd={[
     {
       '@type': 'WebApplication',
-      name: 'Abrechnung → DATEV',
+      name: 'Grünband – Amazon-Abrechnung zu DATEV',
       applicationCategory: 'BusinessApplication',
       operatingSystem: 'Browser',
       inLanguage: 'de',
@@ -24,31 +24,46 @@ import { withBase } from '../lib/url';
     },
   ]}
 >
-  <h1>Amazon-Abrechnung zu DATEV</h1>
-  <p class="lead">
-    Legen Sie den Abrechnungsbericht (Flat File V2) ab. Sie sehen, ob die Summe der Zeilen zur Auszahlung passt, bevor eine
-    Datei entsteht.
-  </p>
+  <section class="intro">
+    <div class="intro-text">
+      <p class="eyebrow">Flat File V2 → DATEV EXTF · im Browser</p>
+      <h1>Amazon-Abrechnung in DATEV-Buchungen umwandeln</h1>
+      <p class="lead">
+        Legen Sie den Abrechnungsbericht ab: Sie sehen sofort, ob die Zeilen zur Auszahlung passen, und erhalten einen geprüften Buchungsstapel für DATEV.
+      </p>
+    </div>
+    <figure class="intro-art">
+      <img src={withBase('/art/hero.svg')} alt="" width="490" height="294" />
+    </figure>
+  </section>
   <Converter client:load />
 
   <hr class="rule-heavy" />
   <p class="section-label">04 Ablauf</p>
   <div class="grid">
     <div class="col-main">
+      <figure class="art-mobile"><img src={withBase('/art/hero.svg')} alt="" width="490" height="294" /></figure>
       <h2>So arbeitet der Konverter</h2>
-      <p>
-        Sie laden im Seller Central den Abrechnungsbericht im Format Flat File V2 herunter und legen ihn oben ab. Der Konverter liest die Datei in
-        Ihrem Browser und vergleicht die Summe aller Zeilen mit dem Auszahlungsbetrag. Stimmt sie, steht dort »Saldo stimmt«. Stimmt sie nicht,
-        sehen Sie die Differenz, bevor irgendeine Datei entsteht.
-      </p>
-      <p>
-        Dann ordnen Sie jede Art von Zeile einem Konto zu, am besten mit Ihrer Steuerkanzlei, die das Kontenprofil einmal festlegt. Die
-        Vorschau zeigt die ersten 25 Buchungszeilen genau so, wie sie in der Datei stehen.
-      </p>
-      <p>
-        Der Download erzeugt den DATEV-Buchungsstapel im Format EXTF, in Windows-1252 kodiert. Er ist kostenpflichtig, die Prüfung ist es nicht.
-        Die Datei wird ausschließlich in Ihrem Browser verarbeitet und nicht hochgeladen.
-      </p>
+      <ol class="steps">
+        <li class="step">
+          <img src={withBase('/art/spot-1.svg')} alt="" width="480" height="360" />
+          <p class="section-label">01</p>
+          <h3>Datei ablegen</h3>
+          <p>Den Abrechnungsbericht (Flat File V2) aus dem Seller Central laden und oben ablegen. Er wird nur in Ihrem Browser gelesen.</p>
+        </li>
+        <li class="step">
+          <img src={withBase('/art/spot-2.svg')} alt="" width="480" height="360" />
+          <p class="section-label">02</p>
+          <h3>Abgleich prüfen</h3>
+          <p>Die Summe aller Zeilen wird mit der Auszahlung verglichen. Bei einer Differenz bleibt der Export gesperrt.</p>
+        </li>
+        <li class="step">
+          <img src={withBase('/art/spot-3.svg')} alt="" width="480" height="360" />
+          <p class="section-label">03</p>
+          <h3>Stapel einlesen</h3>
+          <p>Die EXTF-Datei in DATEV einlesen. Die Konten legen Sie oder Ihre Steuerkanzlei vorher fest.</p>
+        </li>
+      </ol>
 
       <h2>Was in den Buchungsstapel kommt</h2>
       <table class="ledger">
@@ -65,23 +80,23 @@ import { withBase } from '../lib/url';
       </table>
 
       <h2>Häufige Fragen</h2>
-      <details>
+      <details class="faq">
         <summary>Wird meine Datei hochgeladen?</summary>
         <p>Nein. Die Datei wird im Browser gelesen. Beim Download gehen nur Lizenzschlüssel und ein Hash aus Berater- und Mandantennummer an den Server.</p>
       </details>
-      <details>
+      <details class="faq">
         <summary>Welche Berichte werden gelesen?</summary>
         <p>Der Abrechnungsbericht im Format Flat File V2 in EUR. Den alten Bericht (V1, XML) liefert Amazon seit dem 11.11.2026 nicht mehr; der Konverter weist ihn zurück.</p>
       </details>
-      <details>
+      <details class="faq">
         <summary>Was passiert bei einer Differenz?</summary>
         <p>Der Export bleibt gesperrt. Wenn Sie bewusst »Trotzdem exportieren« wählen, entsteht genau eine Differenzbuchung auf das von Ihnen genannte Konto.</p>
       </details>
-      <details>
+      <details class="faq">
         <summary>Wer legt die Konten fest?</summary>
         <p>Sie oder Ihre Steuerkanzlei. Vorschläge sind keine Buchungsempfehlung, und die Bestätigung der Abstimmung ist vor dem ersten Download Pflicht.</p>
       </details>
-      <details>
+      <details class="faq">
         <summary>Was kostet der Download?</summary>
         <p>Händler 9 € im Monat oder 89 € im Jahr, Kanzlei 29 € im Monat oder 290 € im Jahr, netto. Details auf der <a href={withBase('/preise/')}>Preisseite</a>.</p>
       </details>
