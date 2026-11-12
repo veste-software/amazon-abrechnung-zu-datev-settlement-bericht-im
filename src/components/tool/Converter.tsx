@@ -188,7 +188,7 @@ export default function Converter() {
               ? busy || files.map((f) => f.name).join(', ')
               : dzState === 'error'
                 ? 'Die Datei konnte nicht gelesen werden. Die Meldung steht unten.'
-                : 'Flat File V2 · .txt · EUR · mehrere Dateien möglich'}
+                : 'Beispiel: 12345678901.txt (Flat File V2, EUR) · mehrere Dateien möglich'}
           </p>
         </div>
         <button type="button" class={dzState === 'done' ? 'btn' : 'btn btn-primary'} disabled={dzState === 'working'} onClick={() => input.current?.click()}>
