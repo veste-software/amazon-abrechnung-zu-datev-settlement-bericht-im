@@ -1,6 +1,6 @@
 # Amazon-Abrechnung zu DATEV: Settlement-Bericht im Browser in einen DATEV-Buchungsstapel umwandeln
 
-**Stage:** qa · **Platform:** web · **Score:** 3/5 · **Spend:** $10.32
+**Stage:** building · **Platform:** web · **Score:** 3/5 · **Spend:** $10.59
 
 For German Amazon sellers whose tax advisor books in DATEV and who rely on DATEV's Zahlungsdatenservice für Amazon (end 2027-08-15, known data gaps): upload the Amazon settlement report and download a checked DATEV EXTF booking batch (sales, fees, refunds, payout reconciliation) without granting API access. If it takes off it becomes the settlement-to-DATEV converter for every marketplace (eBay, Kaufland, Etsy) that tax advisors recommend to their clients.
 
@@ -36,6 +36,12 @@ For German Amazon sellers whose tax advisor books in DATEV and who rely on DATEV
 - [ ] [task 26] Create the Cloudflare KV namespace and bind it as LICENCES
 - [ ] [task 27] Verify the Amazon report menu path and test an export with a real settlement file and a real DATEV import (SPEC section 11)
 - [ ] [task 28] Have a lawyer review the legal pages (Impressum, Datenschutz, AGB drafts)
+- [ ] [task 29] Download one real Amazon.de Settlement Flat File V2, anonymise it, put it in fixtures/real/ and confirm menu path, date and number format.
+- [ ] [task 30] Have a tax firm or DATEV user test-import a generated EXTF_*.csv into DATEV and confirm it imports and OP-Ausgleich by order ID works; compare the column list in src/lib/datev/columns.ts with https://developer.datev.de/datev/platform/en/dtvf.
+- [ ] [task 31] Create a Stripe account, the 4 prices, set STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET and STRIPE_PRICE_* (names in .env.example), enable invoice emails and the Customer Portal, and set up VAT handling. Stay in test mode until the DATEV import is confirmed.
+- [ ] [task 32] Register the domain, connect Cloudflare Pages, create the LICENCES KV namespace and put its id in wrangler.toml, set PUBLIC_CF_BEACON_TOKEN, and submit the sitemap in Search Console.
+- [ ] [task 33] Fill in the Impressum details and have a lawyer review the legal pages (Impressum, Datenschutz, AGB), including the StBerG wording.
+- [ ] [task 34] Have a tax firm confirm and fill the SKR03/SKR04 suggestion accounts with sources.
 
 ## Recommendation
 
@@ -84,7 +90,6 @@ subscription (Händler 9 EUR/month or 89 EUR/year (1 Mandantennummer); Kanzlei 2
 
 ## History
 
-- 2026-11-12 21:14 · scouted · ranked first in the daily pool (aggregate 3.65 of 5 by 3 independent rankers); the studio builds the day's best candidate whatever its score, and the prototype is how it is judged
 - 2026-11-12 21:25 · specced · spec written
 - 2026-11-12 21:38 · planned · scaffold and plan written
 - 2026-11-12 21:56 · building · build started
@@ -96,3 +101,4 @@ subscription (Händler 9 EUR/month or 89 EUR/year (1 Mandantennummer); Kanzlei 2
 - 2026-11-12 22:37 · qa · all planned tasks done
 - 2026-11-12 22:43 · building · visual review round 2: 1 problem(s) found by code on the front page
 - 2026-11-12 22:49 · qa · all planned tasks done
+- 2026-11-12 22:55 · building · QA round 2 found 1 blocker(s)
