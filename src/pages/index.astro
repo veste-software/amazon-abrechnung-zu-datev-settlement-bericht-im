@@ -7,6 +7,22 @@ import { withBase } from '../lib/url';
 <Base
   title="Amazon-Abrechnung in DATEV-Buchungsstapel umwandeln"
   description="Amazon-Abrechnungsbericht (Flat File V2) im Browser prüfen und als DATEV-Buchungsstapel (EXTF) exportieren. Die Datei wird nicht hochgeladen."
+  jsonLd={[
+    {
+      '@type': 'WebApplication',
+      name: 'Abrechnung → DATEV',
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Browser',
+      inLanguage: 'de',
+      description:
+        'Wandelt den Amazon-Abrechnungsbericht (Flat File V2) im Browser in einen DATEV-Buchungsstapel (EXTF) um, mit Abgleich gegen die Auszahlung.',
+      offers: [
+        { '@type': 'Offer', name: 'Prüfung und Vorschau', price: '0', priceCurrency: 'EUR' },
+        { '@type': 'Offer', name: 'Händler, monatlich (netto)', price: '9', priceCurrency: 'EUR' },
+        { '@type': 'Offer', name: 'Kanzlei, monatlich (netto)', price: '29', priceCurrency: 'EUR' },
+      ],
+    },
+  ]}
 >
   <h1>Amazon-Abrechnung zu DATEV</h1>
   <p class="lead">
