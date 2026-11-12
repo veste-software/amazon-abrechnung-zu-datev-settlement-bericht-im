@@ -1,0 +1,89 @@
+{
+  "title": "Amazon-Abrechnung zu DATEV: Settlement-Bericht im Browser in einen DATEV-Buchungsstapel umwandeln",
+  "pitch": "For German Amazon sellers whose tax advisor books in DATEV and who rely on DATEV's Zahlungsdatenservice für Amazon (end 2027-08-15, known data gaps): upload the Amazon settlement report and download a checked DATEV EXTF booking batch (sales, fees, refunds, payout reconciliation) without granting API access. If it takes off it becomes the settlement-to-DATEV converter for every marketplace (eBay, Kaufland, Etsy) that tax advisors recommend to their clients.",
+  "platform": "web",
+  "language": "de",
+  "targetQueries": [
+    "amazon datev export",
+    "datev amazon zahlungsdatenservice",
+    "amazon datev schnittstelle",
+    "datev amazon buchen",
+    "datev amazon zahlungsdatenservice alternative"
+  ],
+  "evidence": [
+    {
+      "url": "https://www.datev.de/web/de/marktplatz/datev-zahlungsdatenservice-fuer-amazon",
+      "note": "DATEV warns of balance differences, outdated and missing data. Price from 1.36 EUR a month, end of service 2027-08-15, no successor named on the page. Undated page, opened 2026-11-12.",
+      "date": "2026-11-12"
+    },
+    {
+      "url": "https://www.datev.de/web/de/berufsgruppenuebergreifend/nachrichten/rund-um-die-datev-programme/kuendigungen-und-leistungsaenderungen-von-produkten/",
+      "note": "DATEV's discontinuation list: 'DATEV Zahlungsdatenservice für Amazon: 15.08.2027, discontinued'. Customer letters dated October 2026.",
+      "date": "2026-11-12"
+    },
+    {
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=de&q=amazon%20datev",
+      "note": "10 autocomplete variants, including 'amazon datev export', 'datev amazon zahlungsdatenservice' and 'datev amazon buchen'",
+      "date": "2026-11-12"
+    }
+  ],
+  "competitors": [
+    {
+      "name": "Amainvoice",
+      "url": "https://www.amainvoice.de/en/datev-amazon-integration",
+      "verdict": "solid",
+      "gap": "A full Amazon accounting suite (invoices, OSS, Intrastat) from 39 EUR a month for 200 documents. Too dear for small sellers who paid DATEV 1.36 EUR a month."
+    },
+    {
+      "name": "Taxdoo",
+      "url": "https://www.taxdoo.com/en/features/accounting-software-ecommerce/",
+      "verdict": "solid",
+      "gap": "E-commerce accounting and VAT suite, not a small single-job converter. Price not checked."
+    },
+    {
+      "name": "DATEV Datenservice Zahlungsdienstleister (Amazon Payments Europe)",
+      "url": "https://www.datev.de/web/de/marktplatz/datev-datenservice-zahlungsdienstleister-fuer-amazon-payments-europe",
+      "verdict": "partial",
+      "gap": "Seen only in search results. It may be DATEV's own successor. Not opened or checked."
+    },
+    {
+      "name": "DATEV Zahlungsdatenservice für Amazon",
+      "url": "https://www.datev.de/web/de/marktplatz/datev-zahlungsdatenservice-fuer-amazon",
+      "verdict": "abandoned",
+      "gap": "Discontinued from 2027-08-15. DATEV already warns of wrong or missing data."
+    }
+  ],
+  "trigger": {
+    "what": "DATEV stops development, maintenance and service of its Zahlungsdatenservice für Amazon (Art.-Nr. 20496) on 2027-08-15 (end date; announcement date not shown) and already warns of balance differences, outdated and missing data",
+    "date": "2027-08-15",
+    "url": "https://www.datev.de/web/de/marktplatz/datev-zahlungsdatenservice-fuer-amazon"
+  },
+  "window": "Users of the DATEV service must move before 2027-08-15. Pages that rank for 'datev amazon zahlungsdatenservice' in early 2027 catch the migration. After that it is a standing need that Amainvoice and Taxdoo also serve.",
+  "monetizationIdea": "Small Amazon sellers (or their tax advisor on their behalf) pay a low monthly or yearly fee per marketplace account for a correct DATEV booking batch each month.",
+  "money": {
+    "payer": "A German Amazon seller with roughly 50 to 2,000 orders a month whose bookkeeping is done in DATEV by a tax advisor",
+    "buys": "A monthly DATEV booking batch that reconciles to the Amazon payout. This saves the advisor's billable hours for manual booking and avoids balance differences now that DATEV's own service is ending.",
+    "model": "subscription",
+    "price": "12 EUR a month or 99 EUR a year per marketplace account",
+    "priceEur": 99,
+    "billing": "year",
+    "proof": [
+      {
+        "url": "https://www.amainvoice.de/en/datev-amazon-integration",
+        "note": "Amainvoice charges from 39 EUR a month (200 documents) up to 599 EUR a month and claims 2,700+ sellers for Amazon-to-DATEV preparation. Undated page (copyright 2025), opened 2026-11-12.",
+        "date": "2026-11-12"
+      },
+      {
+        "url": "https://www.datev.de/web/de/marktplatz/datev-zahlungsdatenservice-fuer-amazon",
+        "note": "DATEV's own service costs from 1.36 EUR a month. This shows that the payer exists and also how low the price anchor is.",
+        "date": "2026-11-12"
+      }
+    ],
+    "nobodyPaysIf": "DATEV's Datenservice Zahlungsdienstleister turns out to be a cheap drop-in successor, or tax advisors simply move their clients to Amainvoice or Taxdoo, so a small converter is never chosen."
+  },
+  "risks": [
+    "Wrong bookings would anger tax advisors; needs a strict reconciliation check",
+    "Amazon changes its report columns"
+  ],
+  "edge": "Runs from the uploaded settlement report in the browser, with no Amazon API connection and no data upload, at a price near DATEV's old one. Checked: Amainvoice starts at 39 EUR a month and is a full suite. Not checked: whether Amainvoice needs API access."
+}
