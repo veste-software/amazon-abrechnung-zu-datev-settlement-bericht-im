@@ -1,6 +1,6 @@
 # Amazon-Abrechnung zu DATEV: Settlement-Bericht im Browser in einen DATEV-Buchungsstapel umwandeln
 
-**Stage:** qa · **Platform:** web · **Score:** 3/5 · **Spend:** $5.94
+**Stage:** building · **Platform:** web · **Score:** 3/5 · **Spend:** $6.19
 
 For German Amazon sellers whose tax advisor books in DATEV and who rely on DATEV's Zahlungsdatenservice für Amazon (end 2027-08-15, known data gaps): upload the Amazon settlement report and download a checked DATEV EXTF booking batch (sales, fees, refunds, payout reconciliation) without granting API access. If it takes off it becomes the settlement-to-DATEV converter for every marketplace (eBay, Kaufland, Etsy) that tax advisors recommend to their clients.
 
@@ -31,6 +31,11 @@ For German Amazon sellers whose tax advisor books in DATEV and who rely on DATEV
 - [ ] [task 21] Have a tax firm test-import one generated EXTF file; add that to the pages only with their permission
 - [ ] [task 22] Post one disclosed, factual reply in the Seller Central forum thread and list the tool on AlternativeTo, after checking each site's rules
 - [ ] [task 23] Have a lawyer review the legal pages (Impressum, Datenschutz, AGB)
+- [ ] [task 24] Create a Stripe account, create the four prices in test mode and set STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET and STRIPE_PRICE_HAENDLER_MONTH/YEAR and STRIPE_PRICE_KANZLEI_MONTH/YEAR in the Cloudflare Pages project
+- [ ] [task 25] Activate the Stripe customer portal (cancellation) and add a link or login-link to the Preise page, so the cancel path described in the AGB works
+- [ ] [task 26] Create the Cloudflare KV namespace and bind it as LICENCES
+- [ ] [task 27] Verify the Amazon report menu path and test an export with a real settlement file and a real DATEV import (SPEC section 11)
+- [ ] [task 28] Have a lawyer review the legal pages (Impressum, Datenschutz, AGB drafts)
 
 ## Recommendation
 
@@ -85,3 +90,4 @@ subscription (Händler 9 EUR/month or 89 EUR/year (1 Mandantennummer); Kanzlei 2
 - 2026-11-12 21:56 · building · build started
 - 2026-11-12 21:56 · seo · all planned tasks done
 - 2026-11-12 22:02 · qa · seo and conversion foundations written
+- 2026-11-12 22:09 · building · QA round 1 found 1 blocker(s)
