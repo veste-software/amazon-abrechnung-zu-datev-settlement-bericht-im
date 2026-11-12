@@ -44,6 +44,9 @@ describe.skipIf(!have)('built pages', () => {
   });
   it('AC20: sitemap lists exactly the pages of SPEC §8', () => {
     const urls = [...read('sitemap-0.xml').matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname.replace(/^\//, ''));
+    // A sub-path build (build:preview) prefixes every URL with the base; strip it.
+    const base = /^preview\//.test(urls[0] ?? '') && urls.every((u) => /^preview\/?/.test(u)) ? /^preview\/?/ : null;
+    if (base) urls.forEach((u, i) => (urls[i] = u.replace(base, '')));
     expect(urls.sort()).toEqual([...SLUGS].sort());
   });
   it('AC20/21: footer links Impressum and Datenschutz and carries the disclaimer on every page', () => {
