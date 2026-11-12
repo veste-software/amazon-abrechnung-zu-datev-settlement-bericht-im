@@ -60,3 +60,7 @@ The first eight tasks give a thin but working tool end to end on the preview: dr
 - Task 27: keyboard path, aria-live region, labels, print rules and 360 px rules are in place but were not checked in a real browser (none available here).
 - Stripe Checkout metadata `plan` ("haendler"/"kanzlei") decides the plan; the checkout function sets it.
 - Legal pages are drafts; Impressum still holds placeholders for the operator.
+
+## QA round 1
+
+- [ ] [QA round 1] design-check fails (any-gradient, score 3): .paper::before/::after draw the sprocket holes with radial-gradient. Replace with flat shapes (e.g. an inline SVG circle tile repeated with repeat-y, or re… (src/styles/global.css:141)

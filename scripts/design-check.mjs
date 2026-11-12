@@ -83,6 +83,7 @@ const stripComments = (css) => css.replace(/\/\*[\s\S]*?\*\//g, (m) => m.replace
 // Each rule: id, weight, what it found, what to do instead.
 const RULES = {
   'accent-border': { weight: 3, fix: 'Drop the thick one-sided border on cards, quotes and notices. Mark a note with a rule, a tint, a label or a different type treatment instead.' },
+  'any-gradient': { weight: 3, fix: 'Remove every gradient. The owner wants flat brand colours only: use a solid fill, layered flat shapes or a pattern drawn with shapes.' },
   'gradient-text': { weight: 3, fix: 'Set headings in one solid ink colour. Let the typeface and size carry the emphasis.' },
   'glass': { weight: 3, fix: 'Remove backdrop blur (frosted glass). Use flat surfaces with a clear edge or a rule.' },
   'ai-gradient': { weight: 3, fix: 'Remove purple, indigo and violet gradients. Use flat colours from the palette in DESIGN.md.' },
@@ -123,6 +124,8 @@ function scanStyle(findings, file, text, ctx) {
     const colours = m[1].match(/#[0-9a-f]{6}\b|#[0-9a-f]{3}\b/gi) || [];
     if (colours.some(isIndigoViolet) || /\b(indigo|violet|purple|fuchsia|magenta)\b/i.test(m[1])) add(findings, 'ai-gradient', file, lineOf(css, m.index), m[0]);
   }
+  const anyGradient = /(?:linear|radial|conic)-gradient\s*\(|\bbg-gradient-to-\w+|<(?:linear|radial)Gradient\b/gi;
+  if ((m = anyGradient.exec(css))) add(findings, 'any-gradient', file, lineOf(css, m.index), m[0]);
   const tw = /\b(?:from|via|to)-(?:indigo|violet|purple|fuchsia|pink)-\d{2,3}\b/g;
   while ((m = tw.exec(css))) add(findings, 'ai-gradient', file, lineOf(css, m.index), m[0]);
   const hex = /#[0-9a-f]{6}\b/gi;
