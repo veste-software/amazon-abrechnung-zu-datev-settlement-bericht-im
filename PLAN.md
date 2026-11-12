@@ -73,3 +73,9 @@ The first eight tasks give a thin but working tool end to end on the preview: dr
 ## QA round 1
 
 - [x] [QA round 1] design-check fails (any-gradient, score 3): .paper::before/::after draw the sprocket holes with radial-gradient. Replace with flat shapes (e.g. an inline SVG circle tile repeated with repeat-y, or re… (src/styles/global.css:141)
+
+## Visual review round 1
+
+A designer who looked at the real pages said: The front page is not finished.
+
+- [ ] [Visual round 1] The file input is the browser default. Hide it behind a labelled drop area with a clear button and an example of what to drop.
