@@ -1,6 +1,6 @@
 # Amazon-Abrechnung zu DATEV: Settlement-Bericht im Browser in einen DATEV-Buchungsstapel umwandeln
 
-**Stage:** planned · **Platform:** web · **Score:** 3/5 · **Spend:** $3.49
+**Stage:** seo · **Platform:** web · **Score:** 3/5 · **Spend:** $5.74
 
 For German Amazon sellers whose tax advisor books in DATEV and who rely on DATEV's Zahlungsdatenservice für Amazon (end 2027-08-15, known data gaps): upload the Amazon settlement report and download a checked DATEV EXTF booking batch (sales, fees, refunds, payout reconciliation) without granting API access. If it takes off it becomes the settlement-to-DATEV converter for every marketplace (eBay, Kaufland, Etsy) that tax advisors recommend to their clients.
 
@@ -74,3 +74,5 @@ subscription (Händler 9 EUR/month or 89 EUR/year (1 Mandantennummer); Kanzlei 2
 - 2026-11-12 21:14 · scouted · ranked first in the daily pool (aggregate 3.65 of 5 by 3 independent rankers); the studio builds the day's best candidate whatever its score, and the prototype is how it is judged
 - 2026-11-12 21:25 · specced · spec written
 - 2026-11-12 21:38 · planned · scaffold and plan written
+- 2026-11-12 21:56 · building · build started
+- 2026-11-12 21:56 · seo · all planned tasks done
