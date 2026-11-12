@@ -84,4 +84,4 @@ A designer who looked at the real pages said: The front page is not finished.
 
 A designer who looked at the real pages said: The front page is not finished.
 
-- [ ] [Visual round 2] The file input is the browser default. Hide it behind a labelled drop area with a clear button and an example of what to drop.
+- [x] [Visual round 2] The file input is the browser default. Hide it behind a labelled drop area with a clear button and an example of what to drop.
