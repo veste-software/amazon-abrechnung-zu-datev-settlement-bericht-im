@@ -79,3 +79,9 @@ The first eight tasks give a thin but working tool end to end on the preview: dr
 A designer who looked at the real pages said: The front page is not finished.
 
 - [x] [Visual round 1] The file input is the browser default. Hide it behind a labelled drop area with a clear button and an example of what to drop.
+
+## Visual review round 2
+
+A designer who looked at the real pages said: The front page is not finished.
+
+- [ ] [Visual round 2] The file input is the browser default. Hide it behind a labelled drop area with a clear button and an example of what to drop.
